@@ -16,23 +16,11 @@ DUCKING = [pygame.image.load(os.path.join("Assets/Dino", "DinoDuck1.png")),
 BG01 = pygame.image.load(os.path.join("Assets/Other", "background.jpg"))
 BG02 = BG01.copy()
 
-tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png') for i in range(40)]
-fire = [pygame.image.load('Assets/Bird/Bird1.png') for i in range(40)]
-rectree = [None for i in range(len(tree))]
-recfire = [None for i in range(len(fire))]
-for i in range(len(tree)):
-    tree[i] = pygame.transform.scale(tree[i], (20, 20))
-    rectree[i] = tree[i].get_rect()
-    rectree[i].y = -1
-
-for i in range(len(fire)):
-    fire[i] = pygame.transform.scale(fire[i], (20, 20))
-    recfire[i] = fire[i].get_rect()
-    recfire[i].y = -1
+tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png')]
+fire = [pygame.image.load('Assets/Bird/Bird1.png')]
 
 
 class Dino:
-    
     X_POS = 460
     Y_POS = 400
     Y_POS_DUCK = 340
@@ -138,14 +126,12 @@ def main():
 
     # tree
     imgTree = pygame.image.load('Assets/Cactus/LargeCactus1.png')
-    tree_height = imgTree.get_size()[1]
     tree_x = SCREEN_WIDTH
     tree_x3 = SCREEN_WIDTH
     tree_y = 200
     tree_y3 = 200
     # fire
     imgfire = pygame.image.load('Assets/Bird/Bird1.png')
-    fire_height = imgfire.get_size()[1]
     fire_x = SCREEN_WIDTH
     fire_x3 = SCREEN_WIDTH
     fire_y = 200
@@ -214,11 +200,6 @@ def main():
             exit()
 
 
-        
-        
-        
-            
-        
         SCREEN.blit(imgTree, (tree_x, tree_y))
         SCREEN.blit(imgTree, (tree_x3, tree_y3))
         SCREEN.blit(imgfire, (fire_x, fire_y))

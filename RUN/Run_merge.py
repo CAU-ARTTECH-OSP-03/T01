@@ -19,7 +19,6 @@ class MeltingSnowman(pygame.sprite.Sprite):
     JUMP_VEL = 8
 
     def __init__(self, position):
-
         SnowMan_X = 80
         SnowMan_Y = 419
         position = (SnowMan_X, SnowMan_Y)
@@ -85,15 +84,37 @@ class MeltingSnowman(pygame.sprite.Sprite):
         if self.SM_jump:
             self.rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
-            MeltingSnowman.SnowMan_Y = 100
+            MeltingSnowman.SnowMan_Y = 300
 
         if self.jump_vel < - 8:
             self.SM_jump = False
             self.jump_vel = self.JUMP_VEL
-            MeltingSnowman.SnowMan_Y = 400
+            MeltingSnowman.SnowMan_Y = 419
 
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
+
+class IceBall:
+
+    def __init__(self, x, y, speed):
+        self.Ice_x = x
+        self.Ice_y = y
+        self.speed = speed
+
+        self.imgIce = pygame.image.load('Assets/Cactus/LargeCactus1.png')
+        self.ice_rect = self.imgIce.get_rect()
+        self.ice_rect.x = self.Ice_x
+        self.ice_rect.y = self.Ice_y
+
+    def Fly_over(self):
+        self.Ice_x -= self.speed
+        if self.Ice_x <= 0:
+            self.Ice_x = SCREEN_W
+        if self.Ice_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Ice_y:
+            self.Ice_x = SCREEN_W
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
 
 def GameOver():
     font = pygame.font.Font('NanumGothic.ttf', 30)
@@ -105,8 +126,8 @@ def Background(BG, x, y):
     SCREEN.blit(BG01, (x, y))
 
 def main():
-
     player = MeltingSnowman(position=(80, 419))
+    Iceball01 = IceBall(SCREEN_W, 300, 10)
     all_sprites = pygame.sprite.Group(player)
 
     BG01_x = 0
@@ -126,6 +147,10 @@ def main():
         all_sprites.draw(SCREEN)
         pygame.display.update()
 
+        Iceball01.Fly_over()
+        Iceball01.draw(SCREEN)
+        pygame.display.update()
+
         BG01_x -= 4; BG02_x -= 4
 
         if BG01_x == -SCREEN_W:
@@ -137,5 +162,6 @@ def main():
         Background(BG02, BG02_x, 0)
 
         clock.tick(30)
+
 
 main()
