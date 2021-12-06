@@ -13,15 +13,15 @@ clock = pygame.time.Clock()
 
 
 class MeltingSnowman(pygame.sprite.Sprite):
-    SnowMan_X = 80
-    SnowMan_Y = 419
+    SnowMan_X = 200
+    SnowMan_Y = 400
     position = (SnowMan_X, SnowMan_Y)
     JUMP_VEL = 8
 
     def __init__(self, position):
 
-        SnowMan_X = 80
-        SnowMan_Y = 419
+        SnowMan_X = 200
+        SnowMan_Y = 400
         position = (SnowMan_X, SnowMan_Y)
 
         self.SM_run = True
@@ -85,7 +85,7 @@ class MeltingSnowman(pygame.sprite.Sprite):
         if self.SM_jump:
             self.rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
-            MeltingSnowman.SnowMan_Y = 100
+            MeltingSnowman.SnowMan_Y = 200
 
         if self.jump_vel < - 8:
             self.SM_jump = False
@@ -94,6 +94,28 @@ class MeltingSnowman(pygame.sprite.Sprite):
 
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
+
+class FireBall:
+    
+    def __init__(self, x, y, speed):
+        self.Fire_x = x
+        self.Fire_y = y
+        self.speed = speed
+        self.imgFire = pygame.image.load('Assets/Bird/Bird1.png')
+
+    def Fly_over(self):
+        self.Fire_x -= self.speed
+        if self.Fire_x <= 0:
+            self.Fire_x = SCREEN_W
+        if self.Fire_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Fire_y:
+            GameOver()
+            pygame.display.flip()
+            pygame.time.delay(20000)
+            pygame.quit()
+            exit()
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imgFire, (self.Fire_x, self.Fire_y))
 
 def GameOver():
     font = pygame.font.Font('NanumGothic.ttf', 30)
@@ -106,24 +128,28 @@ def Background(BG, x, y):
 
 def main():
 
-    player = MeltingSnowman(position=(80, 419))
+    player = MeltingSnowman(position=(200, 400))
     all_sprites = pygame.sprite.Group(player)
-
+    Fireball01 = FireBall(SCREEN_W, 200, 10)
+    
     BG01_x = 0
     BG02_x = SCREEN_W
 
+    
     run = True
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-
         userInput = pygame.key.get_pressed()
         mt = clock.tick(100) / 1000
+        
 
         all_sprites.update(mt)
         all_sprites.update(userInput)
         all_sprites.draw(SCREEN)
+        Fireball01.Fly_over()
+        Fireball01.draw(SCREEN)
         pygame.display.update()
 
         BG01_x -= 4; BG02_x -= 4
@@ -135,6 +161,9 @@ def main():
 
         Background(BG01, BG01_x, 0)
         Background(BG02, BG02_x, 0)
+
+       
+
 
         clock.tick(30)
 

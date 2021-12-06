@@ -16,21 +16,13 @@ DUCKING = [pygame.image.load(os.path.join("Assets/Dino", "DinoDuck1.png")),
 BG01 = pygame.image.load(os.path.join("Assets/Other", "background.jpg"))
 BG02 = BG01.copy()
 
-tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png') for i in range(40)]
-fire = [pygame.image.load('Assets/Bird/Bird1.png') for i in range(40)]
-rectree = [None for i in range(len(tree))]
-recfire = [None for i in range(len(fire))]
-for i in range(len(tree)):
-    tree[i] = pygame.transform.scale(tree[i], (20, 20))
-    rectree[i] = tree[i].get_rect()
-    rectree[i].y = -1
-
-for i in range(len(fire)):
-    fire[i] = pygame.transform.scale(fire[i], (20, 20))
-    recfire[i] = fire[i].get_rect()
-    recfire[i].y = -1
+tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png')]
+fire = [pygame.image.load('Assets/Bird/Bird1.png')]
 
 
+
+class Fireball:
+    fire_x = SCREEN_WIDTH
 class Dino:
     
     X_POS = 460
@@ -138,7 +130,6 @@ def main():
 
     # tree
     imgTree = pygame.image.load('Assets/Cactus/LargeCactus1.png')
-    tree_height = imgTree.get_size()[1]
     tree_x = SCREEN_WIDTH
     tree_x3 = SCREEN_WIDTH
     tree_y = 200
@@ -194,7 +185,7 @@ def main():
         fire_x -= 6.0
         if fire_x <= 0:
             fire_x = SCREEN_WIDTH
-        if tree_x == Dino.X_POS and Dino.Y_POS == fire_y:
+        if fire_x == Dino.X_POS and Dino.Y_POS == fire_y:
             GameOver()
             pygame.display.flip()
             pygame.time.delay(20000)
