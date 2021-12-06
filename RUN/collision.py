@@ -17,11 +17,18 @@ BG01 = pygame.image.load(os.path.join("Assets/Other", "background.jpg"))
 BG02 = BG01.copy()
 
 tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png') for i in range(40)]
+fire = [pygame.image.load('Assets/Bird/Bird1.png') for i in range(40)]
 rectree = [None for i in range(len(tree))]
+recfire = [None for i in range(len(fire))]
 for i in range(len(tree)):
     tree[i] = pygame.transform.scale(tree[i], (20, 20))
     rectree[i] = tree[i].get_rect()
     rectree[i].y = -1
+
+for i in range(len(fire)):
+    fire[i] = pygame.transform.scale(fire[i], (20, 20))
+    recfire[i] = fire[i].get_rect()
+    recfire[i].y = -1
 
 
 class Dino:
@@ -90,7 +97,7 @@ class Dino:
         if self.dino_jump:
             self.dino_rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
-            Dino.Y_POS = 100
+            Dino.Y_POS = 200
             
         if self.jump_vel < - 8:
             self.dino_jump = False
@@ -99,7 +106,27 @@ class Dino:
 
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
+    def run(self):
+        self.image = self.run_img[self.step_index // 5]
+        self.dino_rect = self.image.get_rect()
+        self.dino_rect.x = self.X_POS
+        self.dino_rect.y = self.Y_POS
+        self.step_index += 1
+
+    def duck(self):
+        self.image = self.duck_img[self.step_index // 5]
+        self.dino_rect = self.image.get_rect()
+        self.dino_rect.x = self.X_POS
+        self.dino_rect.y = self.Y_POS_DUCK
+        self.step_index += 1
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
     
+def GameOver():
+    font = pygame.font.Font('NanumGothic.ttf', 30)
+    GAMEOVER = font.render("GAME OVER", True, (255,255,255))
+    SCREEN.blit(GAMEOVER, (400, 250))
 
 def main():
     global X_pos
@@ -116,7 +143,13 @@ def main():
     tree_x3 = SCREEN_WIDTH
     tree_y = 200
     tree_y3 = 200
-    
+    # fire
+    imgfire = pygame.image.load('Assets/Bird/Bird1.png')
+    fire_height = imgfire.get_size()[1]
+    fire_x = SCREEN_WIDTH
+    fire_x3 = SCREEN_WIDTH
+    fire_y = 200
+    fire_y3 = 200
 
     def back(BG, x, y):
         global SCREEN, BG01
@@ -127,8 +160,8 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
 
-        BG01_x -= 4
-        BG02_x -= 4
+        BG01_x -= 40
+        BG02_x -= 40
 
         if BG01_x == -SCREEN_WIDTH:
             BG01_x = SCREEN_WIDTH
@@ -147,15 +180,39 @@ def main():
         tree_x -= 12.0
         if tree_x <= 0:
             tree_x = SCREEN_WIDTH
-        if tree_x == Dino.X_POS and Dino.Y_POS == 100:
+        if tree_x == Dino.X_POS and Dino.Y_POS == tree_y:
             tree_x = SCREEN_WIDTH
 
         
         tree_x3 -= 2.0
         if tree_x3 <= 0:
             tree_x3 = SCREEN_WIDTH
-        if tree_x3 == Dino.X_POS and Dino.Y_POS == 100:
+        if tree_x3 == Dino.X_POS and Dino.Y_POS == tree_y3:
             tree_x3 = SCREEN_WIDTH
+
+        # fire move
+        fire_x -= 6.0
+        if fire_x <= 0:
+            fire_x = SCREEN_WIDTH
+        if tree_x == Dino.X_POS and Dino.Y_POS == fire_y:
+            GameOver()
+            pygame.display.flip()
+            pygame.time.delay(20000)
+            pygame.quit()
+            exit()
+
+
+        
+        fire_x3 -= 4.0
+        if fire_x3 <= 0:
+            fire_x3 = SCREEN_WIDTH
+        if fire_x3 == Dino.X_POS and Dino.Y_POS == fire_y3:
+            GameOver()
+            pygame.display.flip()
+            pygame.time.delay(20000)
+            pygame.quit()
+            exit()
+
 
         
         
@@ -164,6 +221,10 @@ def main():
         
         SCREEN.blit(imgTree, (tree_x, tree_y))
         SCREEN.blit(imgTree, (tree_x3, tree_y3))
+        SCREEN.blit(imgfire, (fire_x, fire_y))
+        SCREEN.blit(imgfire, (fire_x3, fire_y3))
+
+
 
 
         clock.tick(30)
