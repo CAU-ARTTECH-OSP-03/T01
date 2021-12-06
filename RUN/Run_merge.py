@@ -4,7 +4,7 @@ pygame.init()
 
 SCREEN_H = 560
 SCREEN_W = 1000
-SCREEN = pygame.display.set_mode((SCREEN_W,SCREEN_H))
+SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
 
 BG01 = pygame.image.load("IMG/background.jpg")
 BG02 = BG01.copy()
@@ -24,6 +24,7 @@ class MeltingSnowman(pygame.sprite.Sprite):
         SnowMan_Y = 419
         position = (SnowMan_X, SnowMan_Y)
 
+        self.SM_run = True
         self.SM_jump = False
         self.jump_vel = self.JUMP_VEL
 
@@ -49,18 +50,19 @@ class MeltingSnowman(pygame.sprite.Sprite):
 
     def update(self, userInput):
         userInput = pygame.key.get_pressed()
+        mt = clock.tick(100) / 1000
 
-        if userInput[pygame.K_UP]:
+        if self.SM_run:
+            self.run(mt)
+        if self.SM_jump:
+            self.jump()
+
+        if userInput[pygame.K_UP] and not self.SM_jump:
+            self.SM_run = False
             self.SM_jump = True
-            self.rect.y -= self.jump_vel * 4
-            self.jump_vel -= 1
-            MeltingSnowman.SnowMan_Y = 100
-
-        if self.jump_vel < - 8:
+        elif not (self.SM_jump or userInput[pygame.K_DOWN]):
+            self.SM_run = True
             self.SM_jump = False
-            self.jump_vel = self.JUMP_VEL
-            MeltingSnowman.SnowMan_Y = 400
-
 
     def run(self, mt):
         self.current_time += mt
@@ -77,6 +79,18 @@ class MeltingSnowman(pygame.sprite.Sprite):
                 exit()
 
             self.image = self.images[min(self.index, len(self.images) - 1)]
+
+    def jump(self):
+        self.image = self.images[self.index]
+        if self.SM_jump:
+            self.rect.y -= self.jump_vel * 4
+            self.jump_vel -= 1
+            MeltingSnowman.SnowMan_Y = 100
+
+        if self.jump_vel < - 8:
+            self.SM_jump = False
+            self.jump_vel = self.JUMP_VEL
+            MeltingSnowman.SnowMan_Y = 400
 
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
