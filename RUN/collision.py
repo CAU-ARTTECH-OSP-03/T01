@@ -18,8 +18,14 @@ BG02 = BG01.copy()
 
 tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png')]
 fire = [pygame.image.load('Assets/Bird/Bird1.png')]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
 
 
+class Fireball:
+    fire_x = SCREEN_WIDTH
 class Dino:
     X_POS = 460
     Y_POS = 400
@@ -180,7 +186,7 @@ def main():
         fire_x -= 6.0
         if fire_x <= 0:
             fire_x = SCREEN_WIDTH
-        if tree_x == Dino.X_POS and Dino.Y_POS == fire_y:
+        if fire_x == Dino.X_POS and Dino.Y_POS == fire_y:
             GameOver()
             pygame.display.flip()
             pygame.time.delay(20000)
