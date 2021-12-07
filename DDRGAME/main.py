@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-from time import sleep
+
 
 pygame.init()
 
@@ -184,3 +184,4 @@ def runGame():
 initGame()
 runGame()
 pygame.quit()
+
