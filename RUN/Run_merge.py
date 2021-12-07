@@ -19,10 +19,20 @@ class MeltingSnowman(pygame.sprite.Sprite):
     JUMP_VEL = 8
 
     def __init__(self, position):
+<<<<<<< HEAD
+        SnowMan_X = 80
+        SnowMan_Y = 419
+=======
 
+<<<<<<< HEAD
         SnowMan_X = 80
         SnowMan_Y = 419
 
+=======
+        SnowMan_X = 200
+        SnowMan_Y = 400
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
         position = (SnowMan_X, SnowMan_Y)
 
         self.SM_run = True
@@ -86,8 +96,16 @@ class MeltingSnowman(pygame.sprite.Sprite):
         if self.SM_jump:
             self.rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
+<<<<<<< HEAD
             MeltingSnowman.SnowMan_Y = 300
 
+=======
+<<<<<<< HEAD
+            MeltingSnowman.SnowMan_Y = 300
+=======
+            MeltingSnowman.SnowMan_Y = 200
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 
         if self.jump_vel < - 8:
             self.SM_jump = False
@@ -97,6 +115,7 @@ class MeltingSnowman(pygame.sprite.Sprite):
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
 
+<<<<<<< HEAD
 
 class IceBall:
     
@@ -105,6 +124,15 @@ class IceBall:
         self.Ice_y = y
         self.speed = speed
         self.player = player
+=======
+<<<<<<< HEAD
+class IceBall:
+
+    def __init__(self, x, y, speed):
+        self.Ice_x = x
+        self.Ice_y = y
+        self.speed = speed
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 
         self.imgIce = pygame.image.load('Assets/Cactus/LargeCactus1.png')
         self.ice_rect = self.imgIce.get_rect()
@@ -113,6 +141,7 @@ class IceBall:
 
     def Fly_over(self):
         self.Ice_x -= self.speed
+<<<<<<< HEAD
 
         
         if self.Ice_x <= 0:
@@ -130,6 +159,16 @@ class IceBall:
     def draw(self, SCREEN):
         SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
 
+=======
+        if self.Ice_x <= 0:
+            self.Ice_x = SCREEN_W
+        if self.Ice_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Ice_y:
+            self.Ice_x = SCREEN_W
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
+=======
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 class FireBall:
     
     def __init__(self, x, y, speed):
@@ -151,6 +190,7 @@ class FireBall:
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgFire, (self.Fire_x, self.Fire_y))
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
 
 def GameOver():
     font = pygame.font.Font('NanumGothic.ttf', 30)
@@ -162,7 +202,17 @@ def Background(BG, x, y):
     SCREEN.blit(BG01, (x, y))
 
 def main():
+<<<<<<< HEAD
     player = MeltingSnowman(position=(80, 419))
+=======
+<<<<<<< HEAD
+    player = MeltingSnowman(position=(80, 419))
+    Iceball01 = IceBall(SCREEN_W, 300, 10)
+=======
+
+    player = MeltingSnowman(position=(200, 400))
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
     all_sprites = pygame.sprite.Group(player)
     Iceball01 = IceBall(SCREEN_W, 300, 20, player)
     Fireball01 = FireBall(SCREEN_W, 300, 10)
@@ -202,4 +252,8 @@ def main():
         
         clock.tick(30)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 main()

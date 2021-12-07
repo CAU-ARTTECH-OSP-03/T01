@@ -18,13 +18,15 @@ BG02 = BG01.copy()
 
 tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png')]
 fire = [pygame.image.load('Assets/Bird/Bird1.png')]
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
 
 
 class Fireball:
     fire_x = SCREEN_WIDTH
 class Dino:
-    
     X_POS = 460
     Y_POS = 400
     Y_POS_DUCK = 340
@@ -136,7 +138,6 @@ def main():
     tree_y3 = 200
     # fire
     imgfire = pygame.image.load('Assets/Bird/Bird1.png')
-    fire_height = imgfire.get_size()[1]
     fire_x = SCREEN_WIDTH
     fire_x3 = SCREEN_WIDTH
     fire_y = 200
@@ -205,11 +206,6 @@ def main():
             exit()
 
 
-        
-        
-        
-            
-        
         SCREEN.blit(imgTree, (tree_x, tree_y))
         SCREEN.blit(imgTree, (tree_x3, tree_y3))
         SCREEN.blit(imgfire, (fire_x, fire_y))
