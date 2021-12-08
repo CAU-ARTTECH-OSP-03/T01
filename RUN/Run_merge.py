@@ -32,11 +32,11 @@ class MeltingSnowman(pygame.sprite.Sprite):
         super(MeltingSnowman, self).__init__()
         size = (100, 100)
 
-        images = [(pygame.image.load('IMG/zero.png')),
-                  (pygame.image.load('IMG/one.png')),
-                  (pygame.image.load('IMG/two.png')),
-                  (pygame.image.load('IMG/three.png')),
-                  (pygame.image.load('IMG/four.png'))]
+        images = [(pygame.image.load('IMG/index_0.png')),
+                  (pygame.image.load('IMG/index_1.png')),
+                  (pygame.image.load('IMG/index_2.png')),
+                  (pygame.image.load('IMG/index_3.png')),
+                  (pygame.image.load('IMG/index_4.png'))]
 
         self.rect = pygame.Rect(position, size)
         self.rect.x = self.SnowMan_X
@@ -118,7 +118,6 @@ class IceBall:
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
-
 
 class FireBall:
 
