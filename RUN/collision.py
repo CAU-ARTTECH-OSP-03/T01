@@ -7,7 +7,6 @@ SCREEN_HEIGHT = 560
 SCREEN_WIDTH = 1000
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
 RUNNING = [pygame.image.load(os.path.join("Assets/Dino", "DinoRun1.png")),
            pygame.image.load(os.path.join("Assets/Dino", "DinoRun2.png"))]
 JUMPING = pygame.image.load(os.path.join("Assets/Dino", "DinoJump.png"))
@@ -18,11 +17,6 @@ BG02 = BG01.copy()
 
 tree = [pygame.image.load('Assets/Cactus/LargeCactus1.png')]
 fire = [pygame.image.load('Assets/Bird/Bird1.png')]
-<<<<<<< HEAD
-=======
-
->>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
-
 
 class Fireball:
     fire_x = SCREEN_WIDTH
@@ -205,14 +199,10 @@ def main():
             pygame.quit()
             exit()
 
-
         SCREEN.blit(imgTree, (tree_x, tree_y))
         SCREEN.blit(imgTree, (tree_x3, tree_y3))
         SCREEN.blit(imgfire, (fire_x, fire_y))
         SCREEN.blit(imgfire, (fire_x3, fire_y3))
-
-
-
 
         clock.tick(30)
         pygame.display.update()
