@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e01eaee7-bb04-4d1a-839b-2c66ab9632e5" name="Default Changelist" comment="K">
-      <change afterPath="$PROJECT_DIR$/MENU/NanumGothic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MENU/startmenu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/T01.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DDRGAME/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/DDRGAME/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/IMG/DinoDuck1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/IMG/DinoDuck2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/IMG/DinoJump.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/IMG/DinoRun1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/IMG/DinoRun2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/Run_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/RUN/Run_merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RUN/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/RUN/collision.py" afterDir="false" />
-    </list>
+    <list default="true" id="e01eaee7-bb04-4d1a-839b-2c66ab9632e5" name="Default Changelist" comment="K" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
