@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-from time import sleep
+
 
 pygame.init()
 
@@ -98,6 +98,9 @@ def runGame():
     blockY = 0
     blockSpeed = 3
 
+    #채보 생성
+    
+
 
 
     running = True
@@ -184,3 +187,4 @@ def runGame():
 initGame()
 runGame()
 pygame.quit()
+
