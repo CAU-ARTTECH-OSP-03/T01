@@ -92,13 +92,6 @@ class MeltingSnowman(pygame.sprite.Sprite):
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
 
-class IceBall:
-    
-    def __init__(self, x, y, speed, player):
-        self.Ice_x = x
-        self.Ice_y = y
-        self.speed = speed
-        self.player = player
 
 class IceBall:
 
@@ -106,12 +99,10 @@ class IceBall:
         self.Ice_x = x
         self.Ice_y = y
         self.speed = speed
-
         self.player = player
         self.x_rt = a
         self.time_diff = b
         self.imgIce = pygame.image.load('IMG/iceball.png')
-
 
     def Fly_over(self):
         self.Ice_x -= self.speed
@@ -138,6 +129,7 @@ class IceBall:
     def draw(self, SCREEN):
         SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
 
+
 class FireBall:
 
     def __init__(self, x, y, speed, a):
@@ -161,6 +153,28 @@ class FireBall:
     def draw(self, SCREEN):
         SCREEN.blit(self.imgFire, (self.Fire_x, self.Fire_y))
 
+class Obstacle:
+
+    def __init__(self, x, y, speed, a):
+        self.Obstacle_x = x
+        self.Obstacle_y = y
+        self.speed = speed
+        self.x_rt = a
+        self.imgObstacle = pygame.image.load('IMG/obstacle.png')
+
+    def Appear(self):
+        self.Obstacle_x -= self.speed
+        if self.Obstacle_x <= 0:
+            self.Obstacle_x = SCREEN_W + self.x_rt
+        if self.Obstacle_x == (MeltingSnowman.SnowMan_X + 100) and (MeltingSnowman.SnowMan_Y + 100) == self.Obstacle_y:
+            GameOver()
+            pygame.display.flip()
+            pygame.time.delay(2000)
+            pygame.quit()
+            exit()
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imgObstacle, (self.Obstacle_x, self.Obstacle_y))
 
 
 def GameOver():
@@ -178,6 +192,7 @@ def main():
     all_sprites = pygame.sprite.Group(player)
     Iceball01 = IceBall(SCREEN_W, 300, 20, player, 0, 500)
     Fireball01 = FireBall(SCREEN_W, 300, 10, 300)
+    Obstacle01 = Obstacle(SCREEN_W, 500, 1, 100)
 
     BG01_x = 0
     BG02_x = SCREEN_W
@@ -193,12 +208,15 @@ def main():
         all_sprites.update(mt)
         all_sprites.update(userInput)
         all_sprites.draw(SCREEN)
+
         Fireball01.Fly_over()
         Fireball01.draw(SCREEN)
-        pygame.display.update()
 
         Iceball01.Fly_over()
         Iceball01.draw(SCREEN)
+
+        Obstacle01.Appear()
+        Obstacle01.draw(SCREEN)
         pygame.display.update()
 
         BG01_x -= 4
