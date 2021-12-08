@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -8,7 +9,6 @@ SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
 
 BG01 = pygame.image.load("IMG/background.jpg")
 BG02 = BG01.copy()
-
 clock = pygame.time.Clock()
 
 
@@ -19,20 +19,10 @@ class MeltingSnowman(pygame.sprite.Sprite):
     JUMP_VEL = 8
 
     def __init__(self, position):
-<<<<<<< HEAD
-        SnowMan_X = 80
-        SnowMan_Y = 419
-=======
 
-<<<<<<< HEAD
         SnowMan_X = 80
         SnowMan_Y = 419
 
-=======
-        SnowMan_X = 200
-        SnowMan_Y = 400
->>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
->>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
         position = (SnowMan_X, SnowMan_Y)
 
         self.SM_run = True
@@ -42,11 +32,11 @@ class MeltingSnowman(pygame.sprite.Sprite):
         super(MeltingSnowman, self).__init__()
         size = (100, 100)
 
-        images = [(pygame.image.load('IMG/DinoRun1.png')),
-                  (pygame.image.load('IMG/DinoRun2.png')),
-                  (pygame.image.load('IMG/DinoJump.png')),
-                  (pygame.image.load('IMG/DinoDuck1.png')),
-                  (pygame.image.load('IMG/DinoDuck2.png'))]
+        images = [(pygame.image.load('IMG/zero.png')),
+                  (pygame.image.load('IMG/one.png')),
+                  (pygame.image.load('IMG/two.png')),
+                  (pygame.image.load('IMG/three.png')),
+                  (pygame.image.load('IMG/four.png'))]
 
         self.rect = pygame.Rect(position, size)
         self.rect.x = self.SnowMan_X
@@ -96,16 +86,8 @@ class MeltingSnowman(pygame.sprite.Sprite):
         if self.SM_jump:
             self.rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
-<<<<<<< HEAD
             MeltingSnowman.SnowMan_Y = 300
 
-=======
-<<<<<<< HEAD
-            MeltingSnowman.SnowMan_Y = 300
-=======
-            MeltingSnowman.SnowMan_Y = 200
->>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
->>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 
         if self.jump_vel < - 8:
             self.SM_jump = False
@@ -115,7 +97,6 @@ class MeltingSnowman(pygame.sprite.Sprite):
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
 
-<<<<<<< HEAD
 
 class IceBall:
     
@@ -124,24 +105,14 @@ class IceBall:
         self.Ice_y = y
         self.speed = speed
         self.player = player
-=======
-<<<<<<< HEAD
-class IceBall:
 
-    def __init__(self, x, y, speed):
-        self.Ice_x = x
-        self.Ice_y = y
-        self.speed = speed
->>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
-
-        self.imgIce = pygame.image.load('Assets/Cactus/LargeCactus1.png')
+        self.imgIce = pygame.image.load('IMG/Iceball.png')
         self.ice_rect = self.imgIce.get_rect()
         self.ice_rect.x = self.Ice_x
         self.ice_rect.y = self.Ice_y
 
     def Fly_over(self):
         self.Ice_x -= self.speed
-<<<<<<< HEAD
 
         
         if self.Ice_x <= 0:
@@ -159,23 +130,13 @@ class IceBall:
     def draw(self, SCREEN):
         SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
 
-=======
-        if self.Ice_x <= 0:
-            self.Ice_x = SCREEN_W
-        if self.Ice_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Ice_y:
-            self.Ice_x = SCREEN_W
-
-    def draw(self, SCREEN):
-        SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
-=======
->>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 class FireBall:
     
     def __init__(self, x, y, speed):
         self.Fire_x = x
         self.Fire_y = y
         self.speed = speed
-        self.imgFire = pygame.image.load('Assets/Bird/Bird1.png')
+        self.imgFire = pygame.image.load('IMG/Fireball.png')
 
     def Fly_over(self):
         self.Fire_x -= self.speed
@@ -184,39 +145,87 @@ class FireBall:
         if self.Fire_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Fire_y:
             GameOver()
             pygame.display.flip()
-            pygame.time.delay(5000)
+            pygame.time.delay(3000)
             pygame.quit()
             exit()
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgFire, (self.Fire_x, self.Fire_y))
->>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+class Cloud:
+    def __init__(self,x,y,speed):
+        self.Cloud_x = x
+        self.Cloud_y = y
+        self.speed = speed
+        self.imagecld = pygame.image.load("IMG/Cloud.png")
+        self.width = SCREEN_W
+
+    def update(self):
+        self.Cloud_x -= self.speed
+        if self.Cloud_x < -self.width:
+            self.Cloud_x = SCREEN_W + random.randint(2500, 3000)
+            self.Cloud_y = random.randint(50, 100)
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imagecld, (self.Cloud_x, self.Cloud_y))
+
+class Sun:
+    def __init__(self,x,y,speed):
+        self.Sun_x = x
+        self.Sun_y = y
+        self.speed = speed
+        self.imagesun = pygame.image.load("IMG/Sun.png")
+        self.width = SCREEN_W
+
+    def update(self):
+        self.Sun_x -= self.speed
+        if self.Sun_x == 100:
+            GameClear()
+            pygame.display.flip()
+            pygame.time.delay(3000)
+            pygame.quit()
+            exit()
+
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imagesun, (self.Sun_x, self.Sun_y))
+
+class Wind:
+    def __init__(self,x,y,speed):
+        self.Wind_x = x
+        self.Wind_y = y
+        self.speed = speed
+        self.imagewind = pygame.image.load("IMG/Wind.png")
+        self.width = SCREEN_W
+
+    def update(self):
+        self.Wind_x -= self.speed
+        if self.Wind_x < -self.width:
+            self.Wind_x = SCREEN_W + random.randint(2500, 3000)
+            self.Wind_y = random.randint(50, 100)
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imagewind, (self.Wind_x, self.Wind_y))
 
 def GameOver():
     font = pygame.font.Font('NanumGothic.ttf', 30)
     GAMEOVER = font.render("GAME OVER", True, (255,255,255))
     SCREEN.blit(GAMEOVER, (400, 250))
+def GameClear():
+    font = pygame.font.Font('NanumGothic.ttf', 30)
+    GAMECLEAR = font.render("GAME CLEAR", True, (255,255,255))
+    SCREEN.blit(GAMECLEAR, (400, 250))
 
 def Background(BG, x, y):
     global SCREEN, BG01
     SCREEN.blit(BG01, (x, y))
 
 def main():
-<<<<<<< HEAD
     player = MeltingSnowman(position=(80, 419))
-=======
-<<<<<<< HEAD
-    player = MeltingSnowman(position=(80, 419))
-    Iceball01 = IceBall(SCREEN_W, 300, 10)
-=======
-
-    player = MeltingSnowman(position=(200, 400))
->>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
->>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
     all_sprites = pygame.sprite.Group(player)
     Iceball01 = IceBall(SCREEN_W, 300, 20, player)
     Fireball01 = FireBall(SCREEN_W, 300, 10)
-    
+    Cloud01 = Cloud(SCREEN_W, 100, 20)
+    Sun01 = Sun(SCREEN_W, 70, 1)
+    Wind01 = Wind(SCREEN_W, 100, 60)
     BG01_x = 0
     BG02_x = SCREEN_W
 
@@ -240,6 +249,20 @@ def main():
         Iceball01.draw(SCREEN)
         pygame.display.update()
 
+        Cloud01.update()
+        Cloud01.draw(SCREEN)
+        pygame.display.update()
+
+        Sun01.update()
+        Sun01.draw(SCREEN)
+        pygame.display.update()
+
+        Wind01.update()
+        Wind01.draw(SCREEN)
+        pygame.display.update()
+
+
+
         BG01_x -= 4; BG02_x -= 4
 
         if BG01_x == -SCREEN_W:
@@ -252,8 +275,4 @@ def main():
         
         clock.tick(30)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 main()
