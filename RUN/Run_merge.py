@@ -21,6 +21,20 @@ class MeltingSnowman(pygame.sprite.Sprite):
     def __init__(self, position):
         SnowMan_X = 80
         SnowMan_Y = 419
+<<<<<<< HEAD
+=======
+=======
+
+<<<<<<< HEAD
+        SnowMan_X = 80
+        SnowMan_Y = 419
+
+=======
+        SnowMan_X = 200
+        SnowMan_Y = 400
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
+>>>>>>> refs/remotes/origin/main
         position = (SnowMan_X, SnowMan_Y)
 
         self.SM_run = True
@@ -77,11 +91,29 @@ class MeltingSnowman(pygame.sprite.Sprite):
                 pygame.quit()
                 exit()
 
+<<<<<<< HEAD
     def jump(self):
+=======
+            
+
+    def jump(self):
+        #self.image = self.images[self.index]
+>>>>>>> refs/remotes/origin/main
         if self.SM_jump:
             self.rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
             MeltingSnowman.SnowMan_Y = 300
+<<<<<<< HEAD
+=======
+
+=======
+<<<<<<< HEAD
+            MeltingSnowman.SnowMan_Y = 300
+=======
+            MeltingSnowman.SnowMan_Y = 200
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
+>>>>>>> refs/remotes/origin/main
 
         if self.jump_vel < - 8:
             self.SM_jump = False
@@ -91,6 +123,10 @@ class MeltingSnowman(pygame.sprite.Sprite):
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/main
 
 class IceBall:
     
@@ -99,13 +135,19 @@ class IceBall:
         self.Ice_y = y
         self.speed = speed
         self.player = player
+<<<<<<< HEAD
 
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/main
 class IceBall:
 
     def __init__(self, x, y, speed, player, a, b):
         self.Ice_x = x
         self.Ice_y = y
         self.speed = speed
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
 
         self.player = player
         self.x_rt = a
@@ -115,7 +157,29 @@ class IceBall:
 
     def Fly_over(self):
         self.Ice_x -= self.speed
+<<<<<<< HEAD
         
+=======
+<<<<<<< HEAD
+
+        
+        if self.Ice_x <= 0:
+            self.Ice_x = SCREEN_W
+        if self.Ice_x == self.player.SnowMan_X and self.player.SnowMan_Y == self.Ice_y:
+            self.Ice_x = SCREEN_W + 200
+            self.player.index -= 1
+            if self.player.index == -1:
+                self.player.index = 0
+
+
+            
+        
+
+    def draw(self, SCREEN):
+        SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
+
+=======
+>>>>>>> refs/remotes/origin/main
         if self.Ice_x <= 0:
             self.Ice_x = SCREEN_W
         if self.Ice_x == self.player.SnowMan_X and self.player.SnowMan_Y == self.Ice_y:
@@ -126,8 +190,13 @@ class IceBall:
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
+<<<<<<< HEAD
 
 
+=======
+=======
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
+>>>>>>> refs/remotes/origin/main
 class FireBall:
 
     def __init__(self, x, y, speed, a):
@@ -144,7 +213,11 @@ class FireBall:
         if self.Fire_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Fire_y:
             GameOver()
             pygame.display.flip()
+<<<<<<< HEAD
             pygame.time.delay(2000)
+=======
+            pygame.time.delay(5000)
+>>>>>>> refs/remotes/origin/main
             pygame.quit()
             exit()
 
@@ -165,9 +238,25 @@ def Background(BG, x, y):
 
 def main():
     player = MeltingSnowman(position=(80, 419))
+<<<<<<< HEAD
     all_sprites = pygame.sprite.Group(player)
     Iceball01 = IceBall(SCREEN_W, 300, 20, player, 0, 500)
     Fireball01 = FireBall(SCREEN_W, 300, 10, 300)
+=======
+=======
+<<<<<<< HEAD
+    player = MeltingSnowman(position=(80, 419))
+    Iceball01 = IceBall(SCREEN_W, 300, 10)
+=======
+
+    player = MeltingSnowman(position=(200, 400))
+>>>>>>> 9581436b20ce6439d5787de08ca653838228f3e3
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
+    all_sprites = pygame.sprite.Group(player)
+    Iceball01 = IceBall(SCREEN_W, 300, 20, player)
+    Fireball01 = FireBall(SCREEN_W, 300, 10)
+    
+>>>>>>> refs/remotes/origin/main
     BG01_x = 0
     BG02_x = SCREEN_W
 
@@ -200,7 +289,17 @@ def main():
 
         Background(BG01, BG01_x, 0)
         Background(BG02, BG02_x, 0)
+<<<<<<< HEAD
 
         clock.tick(30)
 
+=======
+        
+        clock.tick(30)
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69811a35023db1d6ab85750c1b84dec435d4e224
+>>>>>>> refs/remotes/origin/main
 main()
