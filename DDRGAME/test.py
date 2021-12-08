@@ -1,38 +1,22 @@
-from pydub import AudioSegment
-from pydub.utils import make_chunks
-import pyaudio
-import librosa
 import numpy as np
 
-song_path = 'powerup.mp3'
-chunk_size = 20  # ms
+#채보 데이터 불러오기
+with open('채보.txt','r') as f:
+    list_file = f.readlines()
+list_file = [line.rstrip('\n') for line in list_file]
 
-y, sr = librosa.load(song_path, duration=None)
-tempo, beats = librosa.beat.beat_track(y=y, sr=sr, trim=False, units='time')
-beats = beats * 1000
+#print(list_file[0])
+# 각 키당 리스트 노트들 저장
+a_list = list_file[0]
+s_list = list_file[1]
+k_list = list_file[2]
+l_list = list_file[3]
 
-# print(beats)
-song = AudioSegment.from_file(song_path)
-p = pyaudio.PyAudio()
-stream = p.open(
-    format=p.get_format_from_width(song.sample_width),
-    channels=song.channels,
-    rate=song.frame_rate,
-    output=True
-)
 
-time_counter = 0  # ms
-for chunk in make_chunks(song, chunk_size):
-    time_counter += chunk_size
-    stream.write(chunk._data)
+for i in range(len(a_list)):
+    if a_list[i] == '1':
+        print('beat!')
 
-    if len(beats) > 0:
-        if time_counter <= beats[0] < time_counter + chunk_size:
-            # print("\n\n\n\n\nenter!")
-            beats = beats[1:]
-            print(beats)
-            input()
 
-stream.stop_stream()
-stream.close()
-p.terminate()
+
+
