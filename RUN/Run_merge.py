@@ -13,8 +13,8 @@ clock = pygame.time.Clock()
 
 
 class MeltingSnowman(pygame.sprite.Sprite):
-    SnowMan_X = 200
-    SnowMan_Y = 400
+    SnowMan_X = 80
+    SnowMan_Y = 419
     position = (SnowMan_X, SnowMan_Y)
     JUMP_VEL = 8
 
@@ -106,29 +106,16 @@ class IceBall:
 
     def Fly_over(self):
         self.Ice_x -= self.speed
-
         if self.Ice_x <= 0:
-            self.Ice_x = SCREEN_W
+            self.Ice_x = SCREEN_W + self.x_rt
         if self.Ice_x == self.player.SnowMan_X and self.player.SnowMan_Y == self.Ice_y:
-            self.Ice_x = SCREEN_W + 200
+            self.Ice_x = SCREEN_W + self.time_diff
             self.player.index -= 1
             if self.player.index == -1:
                 self.player.index = 0
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
-
-        if self.Ice_x <= 0:
-            self.Ice_x = SCREEN_W
-        if self.Ice_x == self.player.SnowMan_X and self.player.SnowMan_Y == self.Ice_y:
-            self.Ice_x = SCREEN_W + 200
-            self.player.index -= 1
-            if self.player.index == -1:
-                self.player.index = 0
-
-    def draw(self, SCREEN):
-        SCREEN.blit(self.imgIce, (self.Ice_x, self.Ice_y))
-
 
 class FireBall:
 
@@ -192,7 +179,7 @@ def main():
     all_sprites = pygame.sprite.Group(player)
     Iceball01 = IceBall(SCREEN_W, 300, 20, player, 0, 500)
     Fireball01 = FireBall(SCREEN_W, 300, 10, 300)
-    Obstacle01 = Obstacle(SCREEN_W, 500, 1, 100)
+    Obstacle01 = Obstacle(SCREEN_W, 519, 20, 100)
 
     BG01_x = 0
     BG02_x = SCREEN_W
