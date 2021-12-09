@@ -98,10 +98,6 @@ def runGame():
     blockY = 0
     blockSpeed = 3
 
-    #채보 생성
-    
-
-
 
     running = True
     while running:
@@ -133,12 +129,6 @@ def runGame():
                 y_k = screen_height - playerKHeight
                 # if y_a < -3:
                 #     y_a += 3
-
-
-
-
-
-
 
 
         if blockY > screen_height:
