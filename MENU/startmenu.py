@@ -25,3 +25,5 @@ def StartMenu():
                 run = False
             if event.type == pygame.KEYDOWN:
                 pygame.quit()
+
+StartMenu()
