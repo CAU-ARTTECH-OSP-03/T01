@@ -12,11 +12,11 @@ blockImage = ['block1.png','block2.png','block3.png','block4.png']
 
 
 def drawObject(obj, x, y):
-    global gamePad, background, clock, playerA, playerS, playerK, playerL, block
+    global gamePad, background, clock, playerA, playerS, playerK, playerL, block, bar, bar1,bar2,bar3,bar4
     gamePad.blit(obj,(x,y))
 
 def initGame():
-    global gamePad, background, clock, playerA, playerS, playerK, playerL, block
+    global gamePad, background, clock, playerA, playerS, playerK, playerL, block, bar, bar1,bar2,bar3,bar4
     pygame.init()
     gamePad = pygame.display.set_mode((screen_width,screen_height))
     pygame.display.set_caption('DDR GAME')
@@ -25,12 +25,16 @@ def initGame():
     playerS = pygame.image.load("./배경/S1.png")
     playerK = pygame.image.load("./배경/K1.png")
     playerL = pygame.image.load("./배경/L1.png")
+    bar1 = pygame.image.load("bar.png")
+    bar2 = pygame.image.load("bar.png")
+    bar3 = pygame.image.load("bar.png")
+    bar4 = pygame.image.load("bar.png")
     #block = pygame.image.load("./배경/block1.png")
     clock = pygame.time.Clock()
 
 #게임 이벤트 시작
 def runGame():
-    global gamePad, clock, background, playerA, playerS, playerK, playerL, block
+    global gamePad, clock, background, playerA, playerS, playerK, playerL, block, bar, bar1,bar2,bar3,bar4
 
     pygame.mixer.music.load("just fine.mp3")
     pygame.mixer.music.play(1)
@@ -43,6 +47,46 @@ def runGame():
     # x = screen_width * 0
     # y = screen_height *0
     # blockX = 0
+
+    # bar크기
+    bar1Size = bar1.get_rect().size
+    bar1Width = bar1Size[0]
+    bar1Height = bar1Size[1]
+
+    # bar 초기위치(X,Y)
+    x_bar1 = screen_width * 0
+    y_bar1 = screen_height - (5.5 * bar1Height)
+    bar_1 = 0
+
+    # bar2크기
+    bar2Size = bar2.get_rect().size
+    bar2Width = bar2Size[0]
+    bar2Height = bar2Size[1]
+
+    # bar 초기위치(X,Y)
+    x_bar2 = screen_width - 90
+    y_bar2 = screen_height - (5.5 * bar1Height)
+    bar_2 = 0
+
+    # bar3크기
+    bar3Size = bar3.get_rect().size
+    bar3Width = bar3Size[0]
+    bar3Height = bar3Size[1]
+
+    # bar3 초기위치(X,Y)
+    x_bar3 = screen_width - 180
+    y_bar3 = screen_height - (5.5 * bar1Height)
+    bar_3 = 0
+
+    # bar4크기
+    bar4Size = bar4.get_rect().size
+    bar4Width = bar4Size[0]
+    bar4Height = bar4Size[1]
+
+    # bar 초기위치(X,Y)
+    x_bar4 = screen_width - 270
+    y_bar4 = screen_height - (5.5 * bar1Height)
+    bar_4 = 0
 
     #player A 크기
     playerASize = playerA.get_rect().size
@@ -110,23 +154,23 @@ def runGame():
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                y_a -= 2
+                y_bar1 -= 2
             if event.key == pygame.K_RIGHT:
-                y_s -= 2
+                y_bar2 -= 2
             if event.key == pygame.K_UP:
-                y_l -= 2
+                y_bar3 -= 2
             if event.key == pygame.K_DOWN:
-                y_k -=2
+                y_bar4 -=2
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                y_a = screen_height - playerAHeight
+                y_bar1 = screen_height - (5.5 * bar1Height)
             if event.key == pygame.K_RIGHT:
-                y_s = screen_height - playerSHeight
+                y_bar2 = screen_height - (5.5 * bar2Height)
             if event.key == pygame.K_UP:
-                y_l = screen_height - playerLHeight
+                y_bar3 = screen_height - (5.5 * bar3Height)
             if event.key == pygame.K_DOWN:
-                y_k = screen_height - playerKHeight
+                y_bar4 = screen_height - (5.5 * bar4Height)
                 # if y_a < -3:
                 #     y_a += 3
 
@@ -166,6 +210,10 @@ def runGame():
 
         drawObject(background, 0, 0)#배경화면 그리기
         #drawObject(block, x, y)
+        drawObject(bar1, x_bar1, y_bar1)
+        drawObject(bar2, x_bar2, y_bar2)
+        drawObject(bar3, x_bar3, y_bar3)
+        drawObject(bar4, x_bar4, y_bar4)
         drawObject(block, blockX, blockY)
         drawObject(playerA, x_a, y_a)
         drawObject(playerS, x_s, y_s)
