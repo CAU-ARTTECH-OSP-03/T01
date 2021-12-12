@@ -9,6 +9,7 @@ Background = pygame.image.load("IMG/MenuBackground.png")
 
 def StartMenu():
     run = True
+    Background = pygame.surface
 
     while run:
         font = pygame.font.Font('NanumGothic.ttf', 30)
@@ -16,7 +17,7 @@ def StartMenu():
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
-        SCREEN.blit(Background, (0, 0))
+        SCREEN.blit(pygame.image.load("IMG/MenuBackground.png"), (0, 0))
         SCREEN.blit(text, textRect)
         pygame.display.update()
 

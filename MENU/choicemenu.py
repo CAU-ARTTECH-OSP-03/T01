@@ -306,7 +306,7 @@ def main():
     Fireball01 = FireBall(SCREEN_W, 300, 10, 300)
     Fireball02 = FireBall(SCREEN_W, 300, 24, 300)
     Obstacle01 = Obstacle(SCREEN_W, 419, 20, 100)
-    Obstacle02 = Obstacle(SCREEN_W, 419, 30, 600)
+    Obstacle02 = Obstacle(SCREEN_W, 419, 25, 600)
 
     Cloud01 = Cloud(SCREEN_W, 100, 20)
     Sun01 = Sun(SCREEN_W, 70, 1)
