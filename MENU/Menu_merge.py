@@ -1,47 +1,66 @@
 import pygame
 import time
 import random
-
+import sys
 pygame.init()
 
-white = (255, 255, 255)
-
-titleImg = pygame.image.load("MENU/IMG/index_3.png")
-runstartImg = pygame.image.load("MENU/IMG/RUN.png")
-bellstartImg = pygame.image.load("MENU/IMG/BELL.png")
-ddrstartImg = pygame.image.load("MENU/IMG/DDR.png")
-quitImg = pygame.image.load("MENU/IMG/Fireball.png")
-clickStartImg = pygame.image.load("MENU/IMG/sun.png")
-clickQuitImg = pygame.image.load("MENU/IMG/wind.png")
-
-
-display_width = 800
-display_height = 600
-gameDisplay = pygame.display.set_mode((display_width, display_height))
+SCREEN_H = 560
+SCREEN_W = 1000
+SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
 pygame.display.set_caption("Merry Winter Story")
+
+BG01 = pygame.image.load("IMG/background.jpg")
+BG02 = BG01.copy()
+titleImg = pygame.image.load("IMG/index_3.png")
+runstartImg = pygame.image.load("IMG/RUN.png")
+bellstartImg = pygame.image.load("IMG/BELL.png")
+ddrstartImg = pygame.image.load("IMG/DDR.png")
+quitImg = pygame.image.load("IMG/Fireball.png")
+clickStartImg = pygame.image.load("IMG/sun.png")
+clickQuitImg = pygame.image.load("IMG/wind.png")
+Background = pygame.image.load("IMG/MenuBackground.png")
 
 clock = pygame.time.Clock()
 
+def StartMenu():
+    run = True
+
+    while run:
+        font = pygame.font.Font(None, 30)
+        text = font.render("Press any Key to Start", True, (0, 0, 0))
+        textRect = text.get_rect()
+        textRect.center = (SCREEN_W // 2, SCREEN_H // 2)
+
+        SCREEN.blit(pygame.image.load("IMG/MenuBackground.png"), (0, 0))
+        SCREEN.blit(text, textRect)
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.KEYDOWN:
+                Choicemenu()
 
 
 class Button:
-    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action = None):
+    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action=None):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if x + width > mouse[0] > x and y + height > mouse[1] > y:
-            gameDisplay.blit(img_act,(x_act, y_act))
+            SCREEN.blit(img_act, (x_act, y_act))
             if click[0] and action != None:
                 time.sleep(1)
                 action()
         else:
-            gameDisplay.blit(img_in,(x,y))
+            SCREEN.blit(img_in, (x, y))
+
 
 def quitgame():
     pygame.quit()
     sys.exit()
 
 
-def mainmenu():
+def Choicemenu():
     menu = True
 
     while menu:
@@ -50,25 +69,15 @@ def mainmenu():
                 pygame.quit()
                 sys.exit()
 
-        gameDisplay.fill(white)
-        
-        titletext = gameDisplay.blit(titleImg, (470,100))
-        rungameButton = Button(runstartImg,140,260,100,50,clickStartImg,180,260,main)
-        bellgameButton = Button(bellstartImg,420,260,100,50,clickStartImg,460,260,main)
-        ddrgameButton = Button(ddrstartImg,700,260,100,50,clickStartImg,740,260,main)
-        quitButton = Button(quitImg,850,400,60,20,clickQuitImg,840,400,quitgame)
+        SCREEN.blit(pygame.image.load("IMG/MenuBackground.png"), (0, 0))
+
+        titletext = SCREEN.blit(titleImg, (470, 100))
+        rungameButton = Button(runstartImg, 140, 260, 100, 50, clickStartImg, 180, 260, RUN)
+        bellgameButton = Button(bellstartImg, 420, 260, 100, 50, clickStartImg, 460, 260, RUN)
+        ddrgameButton = Button(ddrstartImg, 700, 260, 100, 50, clickStartImg, 740, 260, RUN)
+        quitButton = Button(quitImg, 850, 400, 60, 20, clickQuitImg, 840, 400, quitgame)
         pygame.display.update()
         clock.tick(15)
-
-
-
-SCREEN_H = 560
-SCREEN_W = 1000
-SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
-
-BG01 = pygame.image.load("IMG/background.jpg")
-BG02 = BG01.copy()
-clock = pygame.time.Clock()
 
 
 class MeltingSnowman(pygame.sprite.Sprite):
@@ -135,7 +144,7 @@ class MeltingSnowman(pygame.sprite.Sprite):
                 GameOver()
                 pygame.display.flip()
                 pygame.time.delay(2000)
-                mainmenu()
+                Choicemenu()
 
     def jump(self):
         if self.SM_jump:
@@ -195,7 +204,7 @@ class FireBall:
             GameOver()
             pygame.display.flip()
             pygame.time.delay(2000)
-            mainmenu()
+            Choicemenu()
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgFire, (self.Fire_x, self.Fire_y))
@@ -218,7 +227,7 @@ class Obstacle:
             GameOver()
             pygame.display.flip()
             pygame.time.delay(2000)
-            mainmenu()
+            Choicemenu()
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imgObstacle, (self.Obstacle_x, self.Obstacle_y))
@@ -255,8 +264,11 @@ class Sun:
         if self.Sun_x == 100:
             GameClear()
             pygame.display.flip()
+            pygame.time.delay(4000)
+            SCREEN.blit(pygame.image.load("IMG/MenuBackground.png"), (0, 0))
+            pygame.display.flip()
             pygame.time.delay(3000)
-            mainmenu()
+            Choicemenu()
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imagesun, (self.Sun_x, self.Sun_y))
@@ -281,13 +293,13 @@ class Wind:
 
 
 def GameOver():
-    font = pygame.font.Font('NanumGothic.ttf', 30)
+    font = pygame.font.Font(None, 30)
     GAMEOVER = font.render("GAME OVER", True, (255, 255, 255))
     SCREEN.blit(GAMEOVER, (400, 250))
 
 
 def GameClear():
-    font = pygame.font.Font('NanumGothic.ttf', 30)
+    font = pygame.font.Font(None, 30)
     GAMECLEAR = font.render("GAME CLEAR", True, (255, 255, 255))
     SCREEN.blit(GAMECLEAR, (400, 250))
 
@@ -297,7 +309,7 @@ def Background(BG, x, y):
     SCREEN.blit(BG01, (x, y))
 
 
-def main():
+def RUN():
     MeltingSnowman.SnowMan_X = 100
     MeltingSnowman.SnowMan_Y = 419
     player = MeltingSnowman(position=(100, 419))
@@ -306,10 +318,10 @@ def main():
     Fireball01 = FireBall(SCREEN_W, 300, 10, 300)
     Fireball02 = FireBall(SCREEN_W, 300, 24, 300)
     Obstacle01 = Obstacle(SCREEN_W, 419, 20, 100)
-    Obstacle02 = Obstacle(SCREEN_W, 419, 25, 600)
+    Obstacle02 = Obstacle(SCREEN_W, 419, 30, 600)
 
     Cloud01 = Cloud(SCREEN_W, 100, 20)
-    Sun01 = Sun(SCREEN_W, 70, 1)
+    Sun01 = Sun(SCREEN_W, 70, 10)
     Wind01 = Wind(SCREEN_W, 100, 60)
     BG01_x = 0
     BG02_x = SCREEN_W
@@ -323,7 +335,7 @@ def main():
         mt = clock.tick(100) / 1000
 
         player.draw(SCREEN)
-        
+
         all_sprites.update(mt)
         all_sprites.update(userInput)
         all_sprites.draw(SCREEN)
@@ -365,8 +377,4 @@ def main():
         Background(BG02, BG02_x, 0)
         clock.tick(50)
 
-
-
-
-
-mainmenu()
+StartMenu()
