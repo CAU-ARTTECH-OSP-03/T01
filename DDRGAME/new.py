@@ -99,4 +99,8 @@ def main():
         Background(background, 0, 0)
         clock.tick(50)
 
+<<<<<<< HEAD
 main()
+=======
+main()
+>>>>>>> fbf124b8e2f3019f13e48e2984a9f3bb9d0301dc
