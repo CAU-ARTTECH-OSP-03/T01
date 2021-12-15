@@ -1,5 +1,3 @@
-import numpy as np
-
 #채보 데이터 불러오기
 with open('채보.txt','r') as f:
     list_file = f.readlines()
@@ -16,7 +14,3 @@ l_list = list_file[3]
 for i in range(len(a_list)):
     if a_list[i] == '1':
         print('beat!')
-
-
-
-
