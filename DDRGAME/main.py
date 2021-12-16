@@ -2,7 +2,6 @@ import pygame
 import sys
 import random
 
-
 pygame.init()
 
 screen_width = 360
@@ -35,7 +34,7 @@ def initGame():
 
 #게임 이벤트 시작
 def runGame():
-    global gamePad, clock, background, playerA, playerS, playerK, playerL, block, bar, bar1,bar2,bar3,bar4
+    global gamePad, clock, background, playerA, playerS, playerK, playerL, block, bar, bar1, bar2, bar3, bar4
 
     pygame.mixer.music.load("just fine.mp3")
     pygame.mixer.music.play(1)

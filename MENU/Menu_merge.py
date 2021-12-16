@@ -321,7 +321,7 @@ def RUN():
     Obstacle02 = Obstacle(SCREEN_W, 419, 30, 600)
 
     Cloud01 = Cloud(SCREEN_W, 100, 20)
-    Sun01 = Sun(SCREEN_W, 70, 10)
+    Sun01 = Sun(SCREEN_W, 70, 1)
     Wind01 = Wind(SCREEN_W, 100, 60)
     BG01_x = 0
     BG02_x = SCREEN_W
