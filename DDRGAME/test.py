@@ -14,7 +14,7 @@ l_list = list_file[3]
 
 
 for i in range(len(a_list)):
-    if a_list[i] == '1':
+    if a_list[i] == 1:
         print('beat!')
 
 

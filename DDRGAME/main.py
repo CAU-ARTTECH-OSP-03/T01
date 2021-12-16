@@ -9,7 +9,8 @@ screen_width = 360
 screen_height = 720
 WHITE = (0,0,0)
 blockImage = ['block1.png','block2.png','block3.png','block4.png']
-
+a_list=[0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0
+]
 
 def drawObject(obj, x, y):
     global gamePad, background, clock, playerA, playerS, playerK, playerL, block, bar, bar1,bar2,bar3,bar4
@@ -173,6 +174,7 @@ def runGame():
                 y_bar4 = screen_height - (5.5 * bar4Height)
                 # if y_a < -3:
                 #     y_a += 3
+        
 
 
         if blockY > screen_height:

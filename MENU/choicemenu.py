@@ -6,13 +6,13 @@ pygame.init()
 
 white = (255, 255, 255)
 
-titleImg = pygame.image.load("MENU/IMG/index_3.png")
-runstartImg = pygame.image.load("MENU/IMG/RUN.png")
-bellstartImg = pygame.image.load("MENU/IMG/BELL.png")
-ddrstartImg = pygame.image.load("MENU/IMG/DDR.png")
-quitImg = pygame.image.load("MENU/IMG/Fireball.png")
-clickStartImg = pygame.image.load("MENU/IMG/sun.png")
-clickQuitImg = pygame.image.load("MENU/IMG/wind.png")
+titleImg = pygame.image.load("C:\Git\T01\MENU\IMG\index_3.png")
+runstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\RUN.png")
+bellstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\BELL.png")
+ddrstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\DDR.png")
+quitImg = pygame.image.load("C:\Git\T01\MENU\IMG\Fireball.png")
+clickStartImg = pygame.image.load("C:\Git\T01\MENU\IMG\sun.png")
+clickQuitImg = pygame.image.load("C:\Git\T01\MENU\IMG\wind.png")
 
 
 display_width = 800
