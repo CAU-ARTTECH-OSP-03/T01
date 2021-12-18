@@ -48,7 +48,7 @@ def gameover():
 def perfect():
     font = pygame.font.Font('NanumGothic.ttf', 30)
     perfect = font.render("perfect", True, (255, 255, 255))
-    gamePad.blit(perfect, (145, 280))
+    gamePad.blit(perfect, (130, 280))
 
 def Miss():
     font = pygame.font.Font('NanumGothic.ttf', 30)
@@ -130,10 +130,10 @@ def main():
     Block02 = Block(90, 0, 4.5, 1)
     Block03 = Block(180, 0, 3.5, 2)
     Block04 = Block(270, 0, 5, 3)
-    Player01 = player(0, 670, 0)
-    Player02 = player(90, 670, 1)
-    Player03 = player(180, 670, 2)
-    Player04 = player(270, 670, 3)
+    Player01 = player(0, 650, 0)
+    Player02 = player(90, 650, 1)
+    Player03 = player(180, 650, 2)
+    Player04 = player(270, 650, 3)
     snow01 = snow(500, -1900, 0.5)
 
     run = True
@@ -232,11 +232,11 @@ def main():
                 else:
                     Miss()
 
-        # if (Block02.block_y) == (Bar02.bar_y):
-        #     print("판정")
-        #     if event.type == pygame.KEYDOWN:
-        #         if event.key == pygame.K_LEFT:
-        #             print("판정")
+        if (Block02.block_y) == (Bar02.bar_y):
+            print("판정")
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    print("판정")
 
         # if (Block01.block_y + 40)
 
@@ -248,14 +248,14 @@ def main():
         Block03.Falling()
         Block04.draw()
         Block04.Falling()
-        Bar01.draw()
-        Bar02.draw()
-        Bar03.draw()
-        Bar04.draw()
         Player01.draw()
         Player02.draw()
         Player03.draw()
         Player04.draw()
+        Bar01.draw()
+        Bar02.draw()
+        Bar03.draw()
+        Bar04.draw()
         snow01.draw()
         snow01.fallingsnow()
         pygame.display.update()
