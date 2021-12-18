@@ -206,37 +206,49 @@ def main():
 
         if bl01_rect.colliderect(Bar01_rect):
             if bl01_rect.bottom > Bar01_rect.bottom > bl01_rect.top:
+
                 if pressed[pygame.K_a]:
-                        perfect()
+                    perfect()
+
                 else:
-                    Miss()
+                    gameover()
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    mainmenu()
 
         if bl02_rect.colliderect(Bar02_rect):
             if bl02_rect.bottom > Bar02_rect.bottom > bl02_rect.top:
                 if pressed[pygame.K_s]:
                         perfect()
                 else:
-                    Miss()
-
+                    gameover()
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    #mainmenu()
         if bl03_rect.colliderect(Bar03_rect):
             if bl03_rect.bottom > Bar03_rect.bottom > bl03_rect.top:
                 if pressed[pygame.K_k]:
                         perfect()
                 else:
-                    Miss()
-
+                    gameover()
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    #mainmenu()
         if bl04_rect.colliderect(Bar04_rect):
             if bl01_rect.bottom > Bar04_rect.bottom > bl04_rect.top:
                 if pressed[pygame.K_l]:
                         perfect()
                 else:
-                    Miss()
+                    gameover()
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    #mainmenu()
 
-        if (Block02.block_y) == (Bar02.bar_y):
-            print("판정")
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    print("판정")
+        # if (Block02.block_y) == (Bar02.bar_y):
+        #     print("판정")
+        #     if event.type == pygame.KEYDOWN:
+        #         if event.key == pygame.K_LEFT:
+        #             print("판정")
 
         # if (Block01.block_y + 40)
 
