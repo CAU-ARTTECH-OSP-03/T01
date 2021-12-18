@@ -1,19 +1,19 @@
 import pygame
 import time
 import random
+import sys
 
 pygame.init()
 
 white = (255, 255, 255)
 
-titleImg = pygame.image.load("C:\Git\T01\MENU\IMG\index_3.png")
-runstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\RUN.png")
-bellstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\BELL.png")
-ddrstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\DDR.png")
-quitImg = pygame.image.load("C:\Git\T01\MENU\IMG\Fireball.png")
-clickStartImg = pygame.image.load("C:\Git\T01\MENU\IMG\sun.png")
-clickQuitImg = pygame.image.load("C:\Git\T01\MENU\IMG\wind.png")
-
+titleImg = pygame.image.load("./IMG/index_3.png")
+runstartImg = pygame.image.load("./IMG/RUN.png")
+bellstartImg = pygame.image.load("./IMG/BELL.png")
+ddrstartImg = pygame.image.load("./IMG/DDR.png")
+quitImg = pygame.image.load("./IMG/Fireball.png")
+clickStartImg = pygame.image.load("./IMG/sun.png")
+clickQuitImg = pygame.image.load("./IMG/wind.png")
 
 display_width = 800
 display_height = 600
@@ -23,18 +23,18 @@ pygame.display.set_caption("Merry Winter Story")
 clock = pygame.time.Clock()
 
 
-
 class Button:
-    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action = None):
+    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action=None):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if x + width > mouse[0] > x and y + height > mouse[1] > y:
-            gameDisplay.blit(img_act,(x_act, y_act))
+            gameDisplay.blit(img_act, (x_act, y_act))
             if click[0] and action != None:
                 time.sleep(1)
                 action()
         else:
-            gameDisplay.blit(img_in,(x,y))
+            gameDisplay.blit(img_in, (x, y))
+
 
 def quitgame():
     pygame.quit()
@@ -51,15 +51,14 @@ def mainmenu():
                 sys.exit()
 
         gameDisplay.fill(white)
-        
-        titletext = gameDisplay.blit(titleImg, (470,100))
-        rungameButton = Button(runstartImg,140,260,100,50,clickStartImg,180,260,main)
-        bellgameButton = Button(bellstartImg,420,260,100,50,clickStartImg,460,260,main)
-        ddrgameButton = Button(ddrstartImg,700,260,100,50,clickStartImg,740,260,main)
-        quitButton = Button(quitImg,850,400,60,20,clickQuitImg,840,400,quitgame)
+
+        titletext = gameDisplay.blit(titleImg, (470, 100))
+        rungameButton = Button(runstartImg, 140, 260, 100, 50, clickStartImg, 180, 260, main)
+        bellgameButton = Button(bellstartImg, 420, 260, 100, 50, clickStartImg, 460, 260, main)
+        ddrgameButton = Button(ddrstartImg, 700, 260, 100, 50, clickStartImg, 740, 260, main)
+        quitButton = Button(quitImg, 850, 400, 60, 20, clickQuitImg, 840, 400, quitgame)
         pygame.display.update()
         clock.tick(15)
-
 
 
 SCREEN_H = 560
@@ -323,7 +322,7 @@ def main():
         mt = clock.tick(100) / 1000
 
         player.draw(SCREEN)
-        
+
         all_sprites.update(mt)
         all_sprites.update(userInput)
         all_sprites.draw(SCREEN)
@@ -366,7 +365,5 @@ def main():
         clock.tick(50)
 
 
-
-
-
-mainmenu()
+if __name__ == '__main__':
+    mainmenu()

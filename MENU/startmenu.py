@@ -1,5 +1,7 @@
 import pygame
-pygame.init()
+import choicemenu
+import sys
+
 
 SCREEN_HEIGHT = 560
 SCREEN_WIDTH = 1000
@@ -25,6 +27,6 @@ def StartMenu():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.KEYDOWN:
-                pygame.quit()
+                choicemenu.mainmenu()
 
 StartMenu()
