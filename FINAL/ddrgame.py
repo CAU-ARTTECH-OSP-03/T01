@@ -146,7 +146,7 @@ def ddrgame1():
 
     run = True
     while run:
-
+        pygame.init()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -220,12 +220,13 @@ def ddrgame1():
                     Block01.block_y = 800
 
                 if not pressed[pygame.K_a]:
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.time.delay(2000)
                     # pygame.display.flip()
                     # pygame.display.update()
                     choicemenu.mainmenu()
-                    pygame.display.flip
+                    pygame.display.flip()
                     pygame.display.update()
 
 
@@ -236,12 +237,13 @@ def ddrgame1():
                     perfect()
                     Block02.block_y = 800
                 if not pressed[pygame.K_s]:
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.time.delay(2000)
                     # pygame.display.flip()
                     # pygame.display.update()
                     choicemenu.mainmenu()
-                    pygame.display.flip
+                    pygame.display.flip()
                     pygame.display.update()
 
         if bl03_rect.colliderect(Bar03_rect):
@@ -250,12 +252,13 @@ def ddrgame1():
                     perfect()
                     Block03.block_y = 800
                 if not pressed[pygame.K_k]:
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.time.delay(2000)
                     # pygame.display.flip()
                     # pygame.display.update()
                     choicemenu.mainmenu()
-                    pygame.display.flip
+                    pygame.display.flip()
                     pygame.display.update()
 
         if bl04_rect.colliderect(Bar04_rect):
@@ -264,12 +267,13 @@ def ddrgame1():
                     perfect()
                     Block04.block_y = 800
                 if not pressed[pygame.K_l]:
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.time.delay(2000)
                     # pygame.display.flip()
                     # pygame.display.update()
                     choicemenu.mainmenu()
-                    pygame.display.flip
+                    pygame.display.flip()
                     pygame.display.update()
 
         # if (Block02.block_y) == (Bar02.bar_y):

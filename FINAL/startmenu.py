@@ -1,10 +1,8 @@
 import pygame
 import choicemenu
-
 import sys
+SCREEN_HEIGHT = 560
 
-
-SCREEN_HEIGHT = 720
 SCREEN_WIDTH = 1000
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),
                                      pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
