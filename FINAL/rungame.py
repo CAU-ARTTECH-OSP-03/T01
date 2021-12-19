@@ -151,7 +151,7 @@ class Obstacle:
         self.Obstacle_y = y
         self.speed = speed
         self.x_rt = a
-        self.imgObstacle = pygame.image.load('IMG/Fireball_v02.png')
+        self.imgObstacle = pygame.image.load('IMG/Obstacle.png')
 
     def Appear(self):
         self.Obstacle_x -= self.speed
@@ -199,8 +199,7 @@ class Sun:
             GameClear()
             pygame.display.flip()
             pygame.time.delay(3000)
-            pygame.quit()
-            exit()
+            choicemenu.mainmenu()
 
     def draw(self, SCREEN):
         SCREEN.blit(self.imagesun, (self.Sun_x, self.Sun_y))

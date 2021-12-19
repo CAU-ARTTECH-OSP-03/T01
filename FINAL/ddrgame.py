@@ -61,10 +61,12 @@ class snow:
         self.snow_y = y
         self.speed = speed
         self.imgsnow = pygame.image.load("./IMG/bar.png")
+        self.endingbg = pygame.image.load('IMG/ddrending1.png')
 
     def fallingsnow(self):
         self.snow_y += self.speed
         if self.snow_y == 100:
+            gamePad.blit(self.endingbg,(0,0))
             Cleargame()
             pygame.display.flip()
             pygame.time.delay(2000)
@@ -122,9 +124,9 @@ def Background(BG, x, y):
 
 
 def ddrgame1():
+    pygame.init()
     SCREEN = pygame.display.set_mode((screen_width, screen_height),
                                      pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
-    pygame.init()
     pygame.mixer.music.play(1)
     pygame.mixer.music.get_pos()
     #gamePad = pygame.display.set_mode((screen_width, screen_height),
@@ -146,7 +148,6 @@ def ddrgame1():
 
     run = True
     while run:
-        pygame.init()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
