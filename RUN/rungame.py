@@ -307,4 +307,5 @@ def main():
         clock.tick(50)
 
 
-main()
+if __name__ == '__main__':
+    main()
