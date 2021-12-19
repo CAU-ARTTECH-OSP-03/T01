@@ -161,6 +161,14 @@ def ddrgame1():
                     Bar03.bar_y = 635
                 elif event.key == pygame.K_l:
                     Bar04.bar_y = 635
+                elif event.key == pygame.K_q:
+                    pygame.mixer.music.stop()
+                    gameover()
+                    pygame.time.delay(2000)
+                    # pygame.display.flip()
+                    # pygame.display.update()
+                    choicemenu.mainmenu()
+
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:

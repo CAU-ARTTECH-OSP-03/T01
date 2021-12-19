@@ -528,6 +528,11 @@ def handbell1():
                     ddo.play()
                     player.dx = 800
                     SCREEN.blit(bell12_img, (560, 280))
+                elif event.key == pygame.K_q:
+                    SCREEN.blit(endingbg, (0, 0))
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    choicemenu.mainmenu()
 
         player.load_beat("p")
         player.move_x()

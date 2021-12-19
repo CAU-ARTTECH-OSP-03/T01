@@ -4,7 +4,6 @@ import choicemenu
 import sys
 
 pygame.init()
-
 SCREEN_H = 720
 SCREEN_W = 1000
 SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
@@ -240,6 +239,13 @@ def rungame1():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    GameOver()
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    choicemenu.mainmenu()
+
         userInput = pygame.key.get_pressed()
         mt = clock.tick(100) / 1000
 
