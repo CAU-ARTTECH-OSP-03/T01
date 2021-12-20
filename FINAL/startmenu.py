@@ -6,7 +6,7 @@ SCREEN_HEIGHT = 560
 SCREEN_WIDTH = 1000
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),
                                      pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
-Background = pygame.image.load("FINAL/IMG/start.png")
+Background = pygame.image.load("IMG/start.png")
 
 def StartMenu():
     run = True
@@ -15,7 +15,7 @@ def StartMenu():
     while run:
         
 
-        SCREEN.blit(pygame.image.load("FINAL/IMG/start.png"), (0, 0))
+        SCREEN.blit(pygame.image.load("IMG/start.png"), (0, 0))
         
         pygame.display.update()
 

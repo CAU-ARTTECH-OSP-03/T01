@@ -4,26 +4,26 @@ import choicemenu
 
 pygame.init()
 global gamePad, screen_height, screen_width, clock
-blockImage = [pygame.image.load("FINAL/IMG/st1.png"),
-              pygame.image.load("FINAL/IMG/st2.png"),
-              pygame.image.load("FINAL/IMG/st3.png"),
-              pygame.image.load("FINAL/IMG/st4.png")]
+blockImage = [pygame.image.load("IMG/st1.png"),
+              pygame.image.load("IMG/st2.png"),
+              pygame.image.load("IMG/st3.png"),
+              pygame.image.load("IMG/st4.png")]
 
-playerImage = [pygame.image.load("FINAL/IMG/뚝1.png"),
-               pygame.image.load("FINAL/IMG/뚝2.png"),
-               pygame.image.load("FINAL/IMG/뚝3.png"),
-               pygame.image.load("FINAL/IMG/뚝4.png")]
+playerImage = [pygame.image.load("IMG/뚝1.png"),
+               pygame.image.load("IMG/뚝2.png"),
+               pygame.image.load("IMG/뚝3.png"),
+               pygame.image.load("IMG/뚝4.png")]
 
-barImage = [pygame.image.load("FINAL/IMG/바1.png"),
-            pygame.image.load("FINAL/IMG/바2.png"),
-            pygame.image.load("FINAL/IMG/바3.png"),
-            pygame.image.load("FINAL/IMG/바4.png")]
+barImage = [pygame.image.load("IMG/바1.png"),
+            pygame.image.load("IMG/바2.png"),
+            pygame.image.load("IMG/바3.png"),
+            pygame.image.load("IMG/바4.png")]
 
-backImage = [pygame.image.load("FINAL/IMG/ddrbg1.jpg"),
-             pygame.image.load("FINAL/IMG/ddrbg2.jpg"),
-             pygame.image.load("FINAL/IMG/ddrbg3.png")]
-imgBar = pygame.image.load("FINAL/IMG/바1.png")
-background = pygame.image.load("FINAL/IMG/ddrbg1.jpg")
+backImage = [pygame.image.load("IMG/ddrbg1.jpg"),
+             pygame.image.load("IMG/ddrbg2.jpg"),
+             pygame.image.load("IMG/ddrbg3.png")]
+imgBar = pygame.image.load("IMG/바1.png")
+background = pygame.image.load("IMG/ddrbg1.jpg")
 
 screen_width = 360
 screen_height = 720
@@ -32,7 +32,7 @@ gamePad = pygame.display.set_mode((screen_width, screen_height))
 
 clock = pygame.time.Clock()
 #pygame.display.set_caption('DDR GAME')
-music = pygame.mixer.music.load("FINAL/wav/jinglebell.mp3")
+music = pygame.mixer.music.load("wav/jinglebell.mp3")
 
 
 
@@ -60,8 +60,8 @@ class snow:
         self.snow_x = x
         self.snow_y = y
         self.speed = speed
-        self.imgsnow = pygame.image.load("FINAL/IMG/Santa03.png")
-        self.endingbg = pygame.image.load('FINAL/IMG/ddrending1.png')
+        self.imgsnow = pygame.image.load("IMG/Santa03.png")
+        self.endingbg = pygame.image.load('IMG/ddrending1.png')
 
     def fallingsnow(self):
         self.snow_y += self.speed

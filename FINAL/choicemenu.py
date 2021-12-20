@@ -9,14 +9,14 @@ pygame.init()
 
 white = (255,255,255)
 
-titleImg = pygame.image.load("FINAL/IMG/Menutitle.png")
-runstartImg = pygame.image.load("FINAL/IMG/meltingsnowman.png")
-bellstartImg = pygame.image.load("FINAL/IMG/Handbellringing.png")
-ddrstartImg = pygame.image.load("FINAL/IMG/Santaddr.png")
-quitImg = pygame.image.load("FINAL/IMG/Quit.png")
-clickStartImg = pygame.image.load("FINAL/IMG/Santa03.png")
-clickQuitImg = pygame.image.load("FINAL/IMG/Quit.png")
-Background = pygame.image.load("FINAL/IMG/start.png")
+titleImg = pygame.image.load("IMG/Menutitle.png")
+runstartImg = pygame.image.load("IMG/meltingsnowman.png")
+bellstartImg = pygame.image.load("IMG/Handbellringing.png")
+ddrstartImg = pygame.image.load("IMG/Santaddr.png")
+quitImg = pygame.image.load("IMG/Quit.png")
+clickStartImg = pygame.image.load("IMG/Santa03.png")
+clickQuitImg = pygame.image.load("IMG/Quit.png")
+Background = pygame.image.load("IMG/start.png")
 
 display_width = 1000
 display_height = 560
@@ -56,7 +56,7 @@ def mainmenu():
     
     menu = True
     while menu:
-        gameDisplay.blit(pygame.image.load("FINAL/IMG/startmenu.png"), (0, 0))
+        gameDisplay.blit(pygame.image.load("IMG/startmenu.png"), (0, 0))
         
         
         for event in pygame.event.get():

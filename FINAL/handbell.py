@@ -22,20 +22,20 @@ SCORE = 0
 BEAT_COUNT = 103
 
 # bground
-bground_img = pygame.image.load('FINAL/IMG/bellbg.png')
+bground_img = pygame.image.load('IMG/bellbg.png')
 bground = pygame.transform.scale(bground_img, (1000, 560))
-endingbg = pygame.image.load('FINAL/IMG/bellending.png')
+endingbg = pygame.image.load('IMG/bellending.png')
 
 # music
-music = pygame.mixer.Sound('FINAL/wav/backmusic.wav')  # 배경음악
-do = pygame.mixer.Sound('FINAL/wav/do.wav')  # 핸드벨
-re = pygame.mixer.Sound('FINAL/wav/re.wav')
-mi = pygame.mixer.Sound('FINAL/wav/mi.wav')
-pa = pygame.mixer.Sound('FINAL/wav/pa.wav')
-sol = pygame.mixer.Sound('FINAL/wav/sol.wav')
-la = pygame.mixer.Sound('FINAL/wav/la.wav')
-si = pygame.mixer.Sound('FINAL/wav/si.wav')
-ddo = pygame.mixer.Sound('FINAL/wav/ddo.wav')
+music = pygame.mixer.Sound('wav/backmusic.wav')  # 배경음악
+do = pygame.mixer.Sound('wav/do.wav')  # 핸드벨
+re = pygame.mixer.Sound('wav/re.wav')
+mi = pygame.mixer.Sound('wav/mi.wav')
+pa = pygame.mixer.Sound('wav/pa.wav')
+sol = pygame.mixer.Sound('wav/sol.wav')
+la = pygame.mixer.Sound('wav/la.wav')
+si = pygame.mixer.Sound('wav/si.wav')
+ddo = pygame.mixer.Sound('wav/ddo.wav')
 
 # time.sleep(3)  # 시간지연 3초
 # music.play()  # 배경음악 1회실행
@@ -58,7 +58,7 @@ class Beat:
     def load_beat(self, p=""):
         if p == "p":
             # 플레이어
-            self.image = pygame.image.load(DIRBEATS + "player.png")
+            self.image = pygame.image.load("IMG/player.png")
             self.image = pygame.transform.scale(self.image, (100, 100))
             self.rect = self.image.get_rect()
             self.rect.x = self.x
@@ -66,7 +66,7 @@ class Beat:
 
         else:
             # 비트 40개의 이미지중에서 랜덤으로 선택한다.
-            self.image = pygame.image.load(DIRBEATS + random.choice(self.beat_image))
+            self.image = pygame.image.load(random.choice(self.beat_image))
             self.rect = self.image.get_rect()
 
             beatwidth = 100
@@ -124,21 +124,21 @@ def handbell1():
     #pygame.display.set_icon(windowicon)
 
     # bellimage
-    bell1_img = pygame.image.load('FINAL/IMG/doredf.png')
-    bell2_img = pygame.image.load('FINAL/IMG/doreleft.png')
-    bell3_img = pygame.image.load('FINAL/IMG/doreright.png')
+    bell1_img = pygame.image.load('IMG/doredf.png')
+    bell2_img = pygame.image.load('IMG/doreleft.png')
+    bell3_img = pygame.image.load('IMG/doreright.png')
 
-    bell4_img = pygame.image.load('FINAL/IMG/mipadf.png')
-    bell5_img = pygame.image.load('FINAL/IMG/mipaleft.png')
-    bell6_img = pygame.image.load('FINAL/IMG/miparight.png')
+    bell4_img = pygame.image.load('IMG/mipadf.png')
+    bell5_img = pygame.image.load('IMG/mipaleft.png')
+    bell6_img = pygame.image.load('IMG/miparight.png')
 
-    bell7_img = pygame.image.load('FINAL/IMG/solradf.png')
-    bell8_img = pygame.image.load('FINAL/IMG/solraleft.png')
-    bell9_img = pygame.image.load('FINAL/IMG/solraright.png')
+    bell7_img = pygame.image.load('IMG/solradf.png')
+    bell8_img = pygame.image.load('IMG/solraleft.png')
+    bell9_img = pygame.image.load('IMG/solraright.png')
 
-    bell10_img = pygame.image.load('FINAL/IMG/sidodf.png')
-    bell11_img = pygame.image.load('FINAL/IMG/sidoleft.png')
-    bell12_img = pygame.image.load('FINAL/IMG/sidoright.png')
+    bell10_img = pygame.image.load('IMG/sidodf.png')
+    bell11_img = pygame.image.load('IMG/sidoleft.png')
+    bell12_img = pygame.image.load('IMG/sidoright.png')
 
     clock = pygame.time.Clock()
 

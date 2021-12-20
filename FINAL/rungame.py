@@ -7,10 +7,10 @@ pygame.init()
 SCREEN_H = 560
 SCREEN_W = 1000
 SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
-music = pygame.mixer.Sound('FINAL/wav/Christmas Village.mp3')
+music = pygame.mixer.Sound('Christmas Village.mp3')
 
 
-BG01 = pygame.image.load("FINAL/IMG/runbg.png")
+BG01 = pygame.image.load("IMG/runbg.png")
 BG02 = BG01.copy()
 clock = pygame.time.Clock()
 
@@ -35,11 +35,11 @@ class MeltingSnowman(pygame.sprite.Sprite):
         super(MeltingSnowman, self).__init__()
         size = (180, 180)
 
-        images = [(pygame.image.load('FINAL/IMG/snowman.png')),
-                  (pygame.image.load('FINAL/IMG/snowman2.png')),
-                  (pygame.image.load('FINAL/IMG/snowman3.png')),
-                  (pygame.image.load('FINAL/IMG/snowman4.png')),
-                  (pygame.image.load('FINAL/IMG/snowman5.png'))]
+        images = [(pygame.image.load('IMG/snowman.png')),
+                  (pygame.image.load('IMG/snowman2.png')),
+                  (pygame.image.load('IMG/snowman3.png')),
+                  (pygame.image.load('IMG/snowman4.png')),
+                  (pygame.image.load('IMG/snowman5.png'))]
 
         self.rect = pygame.Rect(position, size)
         self.rect.x = self.SnowMan_X
@@ -106,7 +106,7 @@ class IceBall:
         self.player = player
         self.x_rt = a
         self.time_diff = b
-        self.imgIce = pygame.image.load('FINAL/IMG/iceball (1).png')
+        self.imgIce = pygame.image.load('IMG/iceball (1).png')
     
 
     def Fly_over(self):
@@ -131,7 +131,7 @@ class FireBall:
         self.Fire_y = y
         self.speed = speed
         self.x_rt = a
-        self.imgFire = pygame.image.load('FINAL/IMG/Fireball_v03.png')
+        self.imgFire = pygame.image.load('IMG/Fireball_v03.png')
 
     def Fly_over(self):
         self.Fire_x -= self.speed
@@ -155,7 +155,7 @@ class Obstacle:
         self.Obstacle_y = y
         self.speed = speed
         self.x_rt = a
-        self.imgObstacle = pygame.image.load('FINAL/IMG/Obstacle.png')
+        self.imgObstacle = pygame.image.load('IMG/Obstacle.png')
 
     def Appear(self):
         self.Obstacle_x -= self.speed
@@ -177,7 +177,7 @@ class Cloud:
         self.Cloud_x = x
         self.Cloud_y = y
         self.speed = speed
-        self.imagecld = pygame.image.load("FINAL/IMG/Cloud.png")
+        self.imagecld = pygame.image.load("IMG/Cloud.png")
         self.width = SCREEN_W
 
     def update(self):
@@ -195,8 +195,8 @@ class Sun:
         self.Sun_x = x
         self.Sun_y = y
         self.speed = speed
-        self.imagesun = pygame.image.load("FINAL/IMG/sun.png")
-        self.endingbg = pygame.image.load('FINAL/IMG/runending.png')
+        self.imagesun = pygame.image.load("IMG/sun.png")
+        self.endingbg = pygame.image.load('IMG/runending.png')
         self.width = SCREEN_W
 
     def update(self):
