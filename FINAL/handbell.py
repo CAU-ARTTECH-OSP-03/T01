@@ -103,10 +103,14 @@ class Beat:
         else:
             return False
 
+def GameOver():
+    font = pygame.font.Font('NanumGothic.ttf', 30)
+    GAMEOVER = font.render("GAME OVER", True, (255, 255, 255))
+    SCREEN.blit(GAMEOVER, (400, 250))
 
 def handbell1():
     global SCREEN, BEAT_COUNT, WINDOW_WIDTH, WINDOW_HEIGHT, SCORE
-
+    
     time.sleep(3)  # 시간지연 3초
     music.play()  # 배경음악 1회실행
     # pygame 초기화 및 스크린 생성
@@ -482,7 +486,6 @@ def handbell1():
     playing = True
 
     while playing:
-        SCREEN.fill(GRAY)
         SCREEN.blit(bground, (0, 0))
         SCREEN.blit(bell1_img, (200, 270))
         SCREEN.blit(bell4_img, (280, 270))
@@ -528,22 +531,31 @@ def handbell1():
                     ddo.play()
                     player.dx = 800
                     SCREEN.blit(bell12_img, (560, 280))
+                elif event.key == pygame.K_q:
+                    pygame.mixer.music.stop()
+                    SCREEN.blit(endingbg, (0, 0))
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    choicemenu.mainmenu()
 
         player.load_beat("p")
         player.move_x()
         player.draw_beat()
         end = pygame.mixer.music.set_endevent
+
         for i in range(BEAT_COUNT):
             BEATS[i].draw_beat()
             BEATS[i].rect.y += BEATS[i].dy
             if BEATS[102].rect.y == 560:
                 if SCORE >= 3000:
                     SCREEN.blit(endingbg, (0, 0))
+                    pygame.mixer.music.stop()
                     pygame.display.flip()
                     pygame.time.delay(2000)
                     choicemenu.mainmenu()
                 if SCORE < 3000:
-                    SCREEN.blit(endingbg, (0, 0))
+                    SCREEN.blit(endingbg, (100, 100))
+                    pygame.mixer.music.stop()
                     pygame.display.flip()
                     pygame.time.delay(2000)
                     choicemenu.mainmenu()

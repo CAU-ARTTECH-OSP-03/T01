@@ -16,6 +16,7 @@ ddrstartImg = pygame.image.load("FINAL/IMG/Santaddr.png")
 quitImg = pygame.image.load("FINAL/IMG/Quit.png")
 clickStartImg = pygame.image.load("FINAL/IMG/Santa03.png")
 clickQuitImg = pygame.image.load("FINAL/IMG/Quit.png")
+Background = pygame.image.load("FINAL/IMG/start.png")
 
 display_width = 1000
 display_height = 560
@@ -48,23 +49,26 @@ def mainmenu():
 
     display_width = 1000
     display_height = 560
-    gameDisplay = pygame.display.set_mode((display_width, display_height))
+    gameDisplay = pygame.display.set_mode((display_width, display_height),
+                                     pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
+
 
     
     menu = True
     while menu:
-        print(pygame.event.get())
+        gameDisplay.blit(pygame.image.load("FINAL/IMG/startmenu.png"), (0, 0))
+        
+        
         for event in pygame.event.get():
-            break
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-        gameDisplay.fill(white)
-        titletext = gameDisplay.blit(titleImg, (400, 100))
-        rungameButton = Button(runstartImg, 120, 260, 100, 50, clickStartImg, 160, 260, rungame.rungame1)
-        bellgameButton = Button(bellstartImg, 400, 260, 100, 50, clickStartImg, 440, 260, handbell.handbell1)
-        ddrgameButton = Button(ddrstartImg, 680, 260, 100, 50, clickStartImg, 720, 260, ddrgame.ddrgame1)
+        
+        titletext = gameDisplay.blit(titleImg, (350, 80))
+        rungameButton = Button(runstartImg, 85, 240, 100, 50, clickStartImg, 130, 260, rungame.rungame1)
+        bellgameButton = Button(bellstartImg, 365, 240, 100, 50, clickStartImg, 410, 260, handbell.handbell1)
+        ddrgameButton = Button(ddrstartImg, 645, 240, 100, 50, clickStartImg, 690, 260, ddrgame.ddrgame1)
         quitButton = Button(quitImg, 850, 400, 60, 20, clickQuitImg, 840, 400, quitgame)
         pygame.display.flip()
         pygame.display.update()

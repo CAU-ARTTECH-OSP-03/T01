@@ -4,10 +4,10 @@ import choicemenu
 import sys
 
 pygame.init()
-
 SCREEN_H = 560
 SCREEN_W = 1000
 SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+music = pygame.mixer.Sound('FINAL/wav/Christmas Village.mp3')
 
 
 BG01 = pygame.image.load("FINAL/IMG/runbg.png")
@@ -17,14 +17,14 @@ clock = pygame.time.Clock()
 
 class MeltingSnowman(pygame.sprite.Sprite):
     SnowMan_X = 100
-    SnowMan_Y = 419
+    SnowMan_Y = 350
     position = (SnowMan_X, SnowMan_Y)
     JUMP_VEL = 8
 
     def __init__(self, position):
 
         SnowMan_X = 100
-        SnowMan_Y = 419
+        SnowMan_Y = 350
 
         position = (SnowMan_X, SnowMan_Y)
 
@@ -33,7 +33,7 @@ class MeltingSnowman(pygame.sprite.Sprite):
         self.jump_vel = self.JUMP_VEL
 
         super(MeltingSnowman, self).__init__()
-        size = (130, 130)
+        size = (180, 180)
 
         images = [(pygame.image.load('FINAL/IMG/snowman.png')),
                   (pygame.image.load('FINAL/IMG/snowman2.png')),
@@ -85,12 +85,13 @@ class MeltingSnowman(pygame.sprite.Sprite):
         if self.SM_jump:
             self.rect.y -= self.jump_vel * 4
             self.jump_vel -= 1
-            MeltingSnowman.SnowMan_Y = 300
+            MeltingSnowman.SnowMan_Y = 349
+            
 
         if self.jump_vel < - 8:
             self.SM_jump = False
             self.jump_vel = self.JUMP_VEL
-            MeltingSnowman.SnowMan_Y = 419
+            MeltingSnowman.SnowMan_Y = 350
 
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.rect.x, self.rect.y))
@@ -113,7 +114,7 @@ class IceBall:
 
         if self.Ice_x <= 0:
             self.Ice_x = SCREEN_W + self.x_rt
-        if self.Ice_x == self.player.SnowMan_X and self.player.SnowMan_Y == self.Ice_y:
+        if self.Ice_x == self.player.SnowMan_X and self.player.SnowMan_Y-40 == self.Ice_y:
             self.Ice_x = SCREEN_W + self.time_diff
             self.player.index -= 1
             if self.player.index == -1:
@@ -136,10 +137,9 @@ class FireBall:
         self.Fire_x -= self.speed
         if self.Fire_x <= 0:
             self.Fire_x = SCREEN_W + self.x_rt
-        if self.Fire_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Fire_y:
-            
+        if self.Fire_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y-40== self.Fire_y:
+            music.stop()
             GameOver()
-            MeltingSnowman.SnowMan_Y = 419
             pygame.display.flip()
             pygame.time.delay(2000)
             choicemenu.mainmenu()
@@ -155,13 +155,14 @@ class Obstacle:
         self.Obstacle_y = y
         self.speed = speed
         self.x_rt = a
-        self.imgObstacle = pygame.image.load('FINAL/IMG/Fireball_v02.png')
+        self.imgObstacle = pygame.image.load('FINAL/IMG/Obstacle.png')
 
     def Appear(self):
         self.Obstacle_x -= self.speed
         if self.Obstacle_x <= 0:
             self.Obstacle_x = SCREEN_W + self.x_rt
-        if self.Obstacle_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y == self.Obstacle_y:
+        if self.Obstacle_x == MeltingSnowman.SnowMan_X and MeltingSnowman.SnowMan_Y+90 == self.Obstacle_y:
+            music.stop()
             GameOver()
             pygame.display.flip()
             pygame.time.delay(2000)
@@ -200,7 +201,8 @@ class Sun:
 
     def update(self):
         self.Sun_x -= self.speed
-        if self.Sun_x == 100:
+        if self.Sun_x == 10:
+            music.stop()
             SCREEN.blit(self.endingbg, (0, 0))
             pygame.display.flip()
             pygame.time.delay(3000)
@@ -228,27 +230,39 @@ def Background(BG, x, y):
 
 
 def rungame1():
-    
-    player = MeltingSnowman(position=(100, 419))
+    music.play()
+    player = MeltingSnowman(position=(100, 350))
     all_sprites = pygame.sprite.Group(player)
-    Iceball01 = IceBall(SCREEN_W, 300, 20, player, 0, 500)
-    Fireball01 = FireBall(SCREEN_W, 300, 10, 300)
-    Fireball02 = FireBall(SCREEN_W, 300, 28, 320)
-    Obstacle01 = Obstacle(SCREEN_W, 419, 20, 100)
-    Obstacle02 = Obstacle(SCREEN_W, 419, 30, 600)
+    Iceball01 = IceBall(SCREEN_W, 309, 20, player, 0, 500)
+    Iceball02 = IceBall(SCREEN_W, 309, 10, player, 0, 500)
+    Fireball01 = FireBall(SCREEN_W, 309, 30, 300)
+    Fireball02 = FireBall(SCREEN_W, 309, 25, 600)
+    Obstacle01 = Obstacle(SCREEN_W, 440, 15, 200)
+    
 
-    Cloud01 = Cloud(SCREEN_W, 100, 20)
-    Sun01 = Sun(SCREEN_W, 70, 20)
+    Cloud01 = Cloud(SCREEN_W, 60, 20)
+    Sun01 = Sun(SCREEN_W, 40, 2)
     BG01_x = 0
     BG02_x = SCREEN_W
 
     run = True
     while run:
+        print(MeltingSnowman.SnowMan_Y)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    pygame.mixer.music.stop()
+                    GameOver()
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    choicemenu.mainmenu()
+
         userInput = pygame.key.get_pressed()
         mt = clock.tick(100) / 1000
+
+        
 
         all_sprites.update(mt)
         all_sprites.update(userInput)
@@ -263,21 +277,25 @@ def rungame1():
         Iceball01.Fly_over()
         Iceball01.draw(SCREEN)
 
+        Iceball02.Fly_over()
+        Iceball02.draw(SCREEN)
+
+
         Obstacle01.Appear()
         Obstacle01.draw(SCREEN)
 
-        Obstacle02.Appear()
-        Obstacle02.draw(SCREEN)
+        
 
         Cloud01.update()
         Cloud01.draw(SCREEN)
 
+        pygame.display.flip()
         Sun01.update()
         Sun01.draw(SCREEN)
 
         pygame.display.update()
 
-        BG01_x -= 4;
+        BG01_x -= 4
         BG02_x -= 4
 
         if BG01_x == -SCREEN_W:

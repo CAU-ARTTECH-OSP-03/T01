@@ -66,6 +66,7 @@ class snow:
     def fallingsnow(self):
         self.snow_y += self.speed
         if self.snow_y == 100:
+            pygame.mixer.music.stop()
             gamePad.blit(self.endingbg, (0, 0))
             pygame.display.flip()
             pygame.time.wait(2000)
@@ -125,9 +126,9 @@ def Background(BG, x, y):
 
 
 def ddrgame1():
+    pygame.init()
     SCREEN = pygame.display.set_mode((screen_width, screen_height),
                                      pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
-    pygame.init()
     pygame.mixer.music.play(1)
     pygame.mixer.music.get_pos()
     #gamePad = pygame.display.set_mode((screen_width, screen_height),
@@ -149,7 +150,6 @@ def ddrgame1():
 
     run = True
     while run:
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -163,6 +163,14 @@ def ddrgame1():
                     Bar03.bar_y = 635
                 elif event.key == pygame.K_l:
                     Bar04.bar_y = 635
+                elif event.key == pygame.K_q:
+                    pygame.mixer.music.stop()
+                    gameover()
+                    pygame.time.delay(2000)
+                    # pygame.display.flip()
+                    # pygame.display.update()
+                    choicemenu.mainmenu()
+
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
@@ -223,7 +231,7 @@ def ddrgame1():
                     Block01.block_y = 800
 
                 if not pressed[pygame.K_a]:
-                    
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.display.flip()
                     pygame.time.wait(2000)
@@ -236,7 +244,7 @@ def ddrgame1():
                 if pressed[pygame.K_s]:
                     Block02.block_y = 800
                 if not pressed[pygame.K_s]:
-                   
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.display.flip()
                     pygame.time.wait(2000)
@@ -246,6 +254,7 @@ def ddrgame1():
                 if pressed[pygame.K_k]:
                     Block03.block_y = 800
                 if not pressed[pygame.K_k]:
+                    pygame.mixer.music.stop()
                     gameover()
                    
                     pygame.display.flip()
@@ -257,7 +266,7 @@ def ddrgame1():
                 if pressed[pygame.K_l]:
                     Block04.block_y = 800
                 if not pressed[pygame.K_l]:
-                    
+                    pygame.mixer.music.stop()
                     gameover()
                     pygame.display.flip()
                     pygame.time.wait(2000)

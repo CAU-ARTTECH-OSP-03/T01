@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e01eaee7-bb04-4d1a-839b-2c66ab9632e5" name="Default Changelist" comment="K">
-      <change afterPath="$PROJECT_DIR$/HANDBELL/.idea/HANDBELL.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MENU/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MENU/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RUN/.idea/RUN.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +29,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/FINAL" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
