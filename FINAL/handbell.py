@@ -15,7 +15,7 @@ BLACK = (0, 0, 0)
 
 # 소스 디렉토리
 
-DIRBEATS = 'FINAL/IMG/'
+DIRBEATS = 'IMG/'
 
 # 기본 변수
 SCORE = 0
@@ -58,7 +58,7 @@ class Beat:
     def load_beat(self, p=""):
         if p == "p":
             # 플레이어
-            self.image = pygame.image.load("IMG/player.png")
+            self.image = pygame.image.load(DIRBEATS + "player.png")
             self.image = pygame.transform.scale(self.image, (100, 100))
             self.rect = self.image.get_rect()
             self.rect.x = self.x
@@ -66,7 +66,7 @@ class Beat:
 
         else:
             # 비트 40개의 이미지중에서 랜덤으로 선택한다.
-            self.image = pygame.image.load(random.choice(self.beat_image))
+            self.image = pygame.image.load(DIRBEATS + random.choice(self.beat_image))
             self.rect = self.image.get_rect()
 
             beatwidth = 100
@@ -103,14 +103,16 @@ class Beat:
         else:
             return False
 
+
 def GameOver():
     font = pygame.font.Font('NanumGothic.ttf', 30)
     GAMEOVER = font.render("GAME OVER", True, (255, 255, 255))
     SCREEN.blit(GAMEOVER, (400, 250))
 
+
 def handbell1():
     global SCREEN, BEAT_COUNT, WINDOW_WIDTH, WINDOW_HEIGHT, SCORE
-    
+
     time.sleep(3)  # 시간지연 3초
     music.play()  # 배경음악 1회실행
     # pygame 초기화 및 스크린 생성
@@ -120,8 +122,8 @@ def handbell1():
                                      pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.RESIZABLE)
     pygame.display.set_caption("DO NOT CRY HAND BELL")
     # 투명 아이콘은 32 x 32 로 해야 적용 됨
-    #windowicon = pygame.image.load(DIRBEATS + '1.png').convert_alpha()
-    #pygame.display.set_icon(windowicon)
+    # windowicon = pygame.image.load(DIRBEATS + '1.png').convert_alpha()
+    # pygame.display.set_icon(windowicon)
 
     # bellimage
     bell1_img = pygame.image.load('IMG/doredf.png')
@@ -547,19 +549,20 @@ def handbell1():
             BEATS[i].draw_beat()
             BEATS[i].rect.y += BEATS[i].dy
             if BEATS[102].rect.y == 560:
-                if SCORE >= 3000:
-                    SCREEN.blit(endingbg, (0, 0))
-                    pygame.mixer.music.stop()
-                    pygame.display.flip()
-                    pygame.time.delay(2000)
-                    choicemenu.mainmenu()
-                if SCORE < 3000:
-                    SCREEN.blit(endingbg, (100, 100))
-                    pygame.mixer.music.stop()
-                    pygame.display.flip()
-                    pygame.time.delay(2000)
-                    choicemenu.mainmenu()
 
+                if SCORE >= 3700:
+                    pygame.display.flip()
+                    pygame.time.delay(1000)
+                    SCREEN.blit(endingbg, (0, 0))
+                    pygame.display.flip()
+                    pygame.time.delay(2000)
+                    choicemenu.mainmenu()
+                if SCORE < 3700:
+                    GameOver()
+                    pygame.display.flip()
+                    pygame.mixer.music.stop()
+                    pygame.time.delay(2000)
+                    choicemenu.mainmenu()
 
         for i in range(BEAT_COUNT):
             if player.check_collision(BEATS[i], 0):
@@ -568,12 +571,11 @@ def handbell1():
                     BEATS[i].rect.y += 40
                     SCORE += 10
 
-        #print(SCORE)
-
+        # print(SCORE)
 
         # 글씨
         font_01 = pygame.font.SysFont("FixedSsy", 30, True, False)
-        text_score = font_01.render("Score : " + str(SCORE), True, (255,255,255))
+        text_score = font_01.render("Score : " + str(SCORE), True, (255, 255, 255))
         SCREEN.blit(text_score, [15, 15])
         pygame.display.flip()
 
