@@ -1,22 +1,25 @@
 import pygame
 import time
 import random
+<<<<<<< HEAD
 import rungame
 
+=======
+import sys
+>>>>>>> bb3b3d5ee739f9eed67215ffd3ca876dca8d577b
 
 pygame.init()
 
 
 white = (255, 255, 255)
 
-titleImg = pygame.image.load("C:\Git\T01\MENU\IMG\index_3.png")
-runstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\RUN.png")
-bellstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\BELL.png")
-ddrstartImg = pygame.image.load("C:\Git\T01\MENU\IMG\DDR.png")
-quitImg = pygame.image.load("C:\Git\T01\MENU\IMG\Fireball.png")
-clickStartImg = pygame.image.load("C:\Git\T01\MENU\IMG\sun.png")
-clickQuitImg = pygame.image.load("C:\Git\T01\MENU\IMG\wind.png")
-
+titleImg = pygame.image.load("./IMG/index_3.png")
+runstartImg = pygame.image.load("./IMG/RUN.png")
+bellstartImg = pygame.image.load("./IMG/BELL.png")
+ddrstartImg = pygame.image.load("./IMG/DDR.png")
+quitImg = pygame.image.load("./IMG/Fireball.png")
+clickStartImg = pygame.image.load("./IMG/sun.png")
+clickQuitImg = pygame.image.load("./IMG/wind.png")
 
 
 
@@ -28,19 +31,24 @@ display_height = 600
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 
 
-
 class Button:
-    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action = None):
+    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action=None):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if x + width > mouse[0] > x and y + height > mouse[1] > y:
-            gameDisplay.blit(img_act,(x_act, y_act))
+            gameDisplay.blit(img_act, (x_act, y_act))
             if click[0] and action != None:
                 time.sleep(1)
                 action()
         else:
+<<<<<<< HEAD
             gameDisplay.blit(img_in,(x,y))
     
+=======
+            gameDisplay.blit(img_in, (x, y))
+
+
+>>>>>>> bb3b3d5ee739f9eed67215ffd3ca876dca8d577b
 def quitgame():
     pygame.quit()
     sys.exit()
@@ -65,20 +73,35 @@ def mainmenu(self):
                 sys.exit()
 
         gameDisplay.fill(white)
+<<<<<<< HEAD
         
         titletext = gameDisplay.blit(titleImg, (470,100))
         rungameButton = Button(runstartImg,140,260,100,50,clickStartImg,180,260,rungame.main)
         bellgameButton = Button(bellstartImg,420,260,100,50,clickStartImg,460,260,rungame.main)
         ddrgameButton = Button(ddrstartImg,700,260,100,50,clickStartImg,740,260,rungame.main)
         quitButton = Button(quitImg,850,400,60,20,clickQuitImg,840,400,quitgame)
+=======
+
+        titletext = gameDisplay.blit(titleImg, (470, 100))
+        rungameButton = Button(runstartImg, 140, 260, 100, 50, clickStartImg, 180, 260, main)
+        bellgameButton = Button(bellstartImg, 420, 260, 100, 50, clickStartImg, 460, 260, main)
+        ddrgameButton = Button(ddrstartImg, 700, 260, 100, 50, clickStartImg, 740, 260, main)
+        quitButton = Button(quitImg, 850, 400, 60, 20, clickQuitImg, 840, 400, quitgame)
+>>>>>>> bb3b3d5ee739f9eed67215ffd3ca876dca8d577b
         pygame.display.update()
         clock.tick(15)
 
 
+<<<<<<< HEAD
 
 # SCREEN_H = 560
 # SCREEN_W = 1000
 # SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+=======
+SCREEN_H = 560
+SCREEN_W = 1000
+SCREEN = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+>>>>>>> bb3b3d5ee739f9eed67215ffd3ca876dca8d577b
 
 # BG01 = pygame.image.load("IMG/background.jpg")
 # BG02 = BG01.copy()
@@ -116,6 +139,7 @@ def mainmenu(self):
 #         self.rect.y = self.SnowMan_Y
 #         self.images = [pygame.transform.scale(image, size) for image in images]
 
+<<<<<<< HEAD
 #         self.index = 0
 #         self.image = images[self.index]
 
@@ -341,6 +365,13 @@ def mainmenu(self):
 #         all_sprites.update(mt)
 #         all_sprites.update(userInput)
 #         all_sprites.draw(SCREEN)
+=======
+        player.draw(SCREEN)
+
+        all_sprites.update(mt)
+        all_sprites.update(userInput)
+        all_sprites.draw(SCREEN)
+>>>>>>> bb3b3d5ee739f9eed67215ffd3ca876dca8d577b
 
 #         Fireball01.Fly_over()
 #         Fireball01.draw(SCREEN)
@@ -380,8 +411,13 @@ def mainmenu(self):
 #         clock.tick(50)
 
 
+<<<<<<< HEAD
 
 
 if __name__ == '__main__':
     mainmenu()
 
+=======
+if __name__ == '__main__':
+    mainmenu()
+>>>>>>> bb3b3d5ee739f9eed67215ffd3ca876dca8d577b
